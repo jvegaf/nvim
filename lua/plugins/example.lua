@@ -28,7 +28,7 @@ return {
   },
 
   -- disable trouble
-  { "folke/trouble.nvim", enabled = false },
+  -- { "folke/trouble.nvim", enabled = false },
 
   -- add symbols-outline
   {
@@ -182,7 +182,7 @@ return {
     end,
   },
 
-  -- or you can return new options to override all the defaults
+  -- lualine
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
@@ -192,7 +192,12 @@ return {
       }
     end,
   },
-
+  {
+    "moll/vim-bbye",
+    lazy = true,
+    cmd = { "Bdelete" },
+    keys = { { "<A-q>", "<cmd>Bdelete<cr>", desc = "Close Buffer" } },
+  },
   -- use mini.starter instead of alpha
   { import = "lazyvim.plugins.extras.ui.mini-starter" },
 
