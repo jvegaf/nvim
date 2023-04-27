@@ -9,5 +9,4 @@ if host == "Linux" then
   return
 end
 
-print("Windows")
 require("config.windows")
