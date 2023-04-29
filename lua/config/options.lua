@@ -15,7 +15,7 @@ local options = {
   foldenable = true,
   foldlevel = 99,
   foldlevelstart = 99,
-  guifont = "ComicCodeLigatures NF:h12", -- the font used in graphical neovim applications
+  -- guifont = "ComicCodeLigatures NF:h12", -- the font used in graphical neovim applications
   hlsearch = true, -- highlight all matches on previous search pattern
   ignorecase = true, -- ignore case in search patterns
   incsearch = false,
@@ -99,10 +99,11 @@ vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
 vim.cmd([[set formatoptions-=cro]]) -- TODO: this doesn't seem to work
 
-vim.g.mapleader = ","
-vim.g.maplocalleader = ","
 vim.filetype.add({
   extension = {
     conf = "dosini",
   },
 })
+--
+-- vim.g.mapleader = ","
+-- vim.g.maplocalleader = ","
