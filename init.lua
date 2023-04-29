@@ -1,4 +1,5 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
+
 require("config.lazy")
 
 local host = vim.loop.os_uname().sysname
