@@ -1,3 +1,8 @@
+local present, ufo = pcall(require, "ufo")
+if not present then
+  return
+end
+
 local handler = function(virtText, lnum, endLnum, width, truncate)
   local newVirtText = {}
   local suffix = ("  %d "):format(endLnum - lnum)
@@ -31,7 +36,7 @@ vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decr
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 
-require("ufo").setup({
+ufo.setup({
   fold_virt_text_handler = handler,
 })
 
