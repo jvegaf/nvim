@@ -1,5 +1,6 @@
 return {
   "kevinhwang91/nvim-ufo",
+  lazy = false,
   dependencies = {
     "kevinhwang91/promise-async",
     "neovim/nvim-lspconfig",
@@ -18,4 +19,7 @@ return {
       end,
     },
   },
+  config = function()
+    require("plugins.configs.nvim-ufo")
+  end,
 }
