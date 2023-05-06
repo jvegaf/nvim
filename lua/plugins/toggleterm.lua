@@ -3,7 +3,7 @@ return {
   lazy = false,
   branch = "main",
   keys = {
-    { "<A-1>", "<Cmd>1ToggleTerm direction=vertical<Cr>", desc = "Terminal #1", mode = { "t", "n" } },
+    { "<A-1>", "<Cmd>1ToggleTerm direction=vertical size=vim.o.columns*0.4<Cr>", desc = "Terminal #1", mode = { "t", "n" } },
     { "<A-2>", "<Cmd>2ToggleTerm<Cr>", desc = "Terminal #2", mode = { "t", "n" } },
     { "<A-3>", "<Cmd>3ToggleTerm direction=horizontal<Cr>", desc = "Terminal #3", mode = { "t", "n" } },
   },
