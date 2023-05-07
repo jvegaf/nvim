@@ -37,6 +37,9 @@ keymap("v", "p", '"_dP', NS)
 
 keymap("n", "<F1>", "<cmd>vertical help<cr>", { noremap = true, silent = true, desc = "Vertical Help" })
 
+keymap("n", "<leader>w", "<cmd>w<cr>", { noremap = true, silent = true, desc = "Save" })
+keymap("n", "<leader>C", "<cmd>e $MYVIMRC<cr>", { noremap = true, silent = true, desc = "Config" })
+
 keymap(
   "n",
   "<A-q>",
