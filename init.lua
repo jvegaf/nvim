@@ -2,11 +2,13 @@
 
 require("config.lazy")
 
-local host = vim.loop.os_uname().sysname
+local is_win = vim.loop.os_uname().sysname == "Windows_NT"
 
-if host == "Linux" then
+if not is_win then
   require("config.linux")
   return
 end
 
-require("config.windows")
+if is_win then
+  require("config.windows")
+end
