@@ -2,13 +2,18 @@
 
 require("config.lazy")
 
+local is_lin = vim.loop.os_uname().sysname == "Linux"
 local is_win = vim.loop.os_uname().sysname == "Windows_NT"
 
-if not is_win then
+if is_lin then
   require("config.linux")
-  return
 end
 
 if is_win then
   require("config.windows")
+end
+
+if vim.g.neovide then
+  vim.opt.guifont = "ComicCodeLigatures NF:h11"
+  vim.g.neovide_cursor_trail_size = 0.4
 end
