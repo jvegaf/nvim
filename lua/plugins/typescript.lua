@@ -23,7 +23,15 @@ return {
     setup = {
       -- example to setup with typescript.nvim
       tsserver = function(_, opts)
-        require("typescript").setup({ server = opts })
+        -- require("typescript").setup({ server = opts })
+        require("typescript").setup({
+          server = {
+            capabilities = require("plugins.configs.tsserver").capabilities,
+            handlers = require("plugins.configs.tsserver").handlers,
+            on_attach = require("plugins.configs.tsserver").on_attach,
+            settings = require("plugins.configs.tsserver").settings,
+          },
+        })
         return true
       end,
       -- Specify * to use this function as a fallback for any server

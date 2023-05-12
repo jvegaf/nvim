@@ -1,4 +1,4 @@
-local codeium_lin = {
+local codeium_wsl = {
   "hrsh7th/nvim-cmp",
   dependencies = {
     {
@@ -19,7 +19,7 @@ local codeium_lin = {
   end,
 }
 
-local codeium_win = {
+local codeium_default = {
   "Exafunction/codeium.vim",
   lazy = false,
   cmd = "Codeium",
@@ -37,12 +37,10 @@ local codeium_win = {
 
 local is_lin = vim.loop.os_uname().sysname == "Linux"
 
-local is_win = vim.loop.os_uname().sysname == "Windows_NT"
+local is_wsl = is_lin and vim.loop.os_uname().release:lower():find("microsoft") and true or false
 
-if is_lin then
-  return codeium_lin
+if is_wsl then
+  return codeium_wsl
 end
 
-if is_win then
-  return codeium_win
-end
+return codeium_default
