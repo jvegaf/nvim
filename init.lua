@@ -14,6 +14,5 @@ if is_win then
 end
 
 if vim.g.neovide then
-  vim.opt.guifont = "ComicCodeLigatures NF:h11"
   vim.g.neovide_cursor_trail_size = 0.4
 end
