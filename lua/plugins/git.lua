@@ -11,12 +11,16 @@ return {
   {
     "sindrets/diffview.nvim",
     event = "BufRead",
-    -- TODO: complete keymaps
+    keys = {
+      { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Open diff" },
+      { "<leader>gD", "<cmd>DiffviewClose<cr>", desc = "Close diff" },
+      { "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", desc = "View file history" },
+      { "<leader>gh", ":'<,'>DiffviewFileHistory<cr>", mode = { "v" }, desc = "View selected history" },
+    },
   },
   {
     "akinsho/git-conflict.nvim",
     opts = {
-      default_mappings = true, -- disable buffer local mapping created by this plugin
       disable_diagnostics = true, -- This will disable the diagnostics in a buffer whilst it is conflicted
       highlights = { -- They must have background color, otherwise the default color will be used
         incoming = "DiffText",
@@ -29,6 +33,13 @@ return {
     cmd = "LazyGit",
     keys = {
       { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+    },
+  },
+  {
+    "ray-x/forgit.nvim",
+    event = "BufRead",
+    dependencies = {
+      "ray-x/guihua.lua",
     },
   },
 }
