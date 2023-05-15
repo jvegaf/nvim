@@ -13,7 +13,7 @@ autocmds({ "FileType" }, {
   desc = "Dont't continue comments with o/O",
 })
 
-vim.api.nvim_create_autocmd("LspAttach", {
+autocmds("LspAttach", {
   group = vim.api.nvim_create_augroup("lsp_attach_auto_diag", { clear = true }),
   callback = function(args)
     -- the buffer where the lsp attached
@@ -36,5 +36,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.diagnostic.open_float(nil, opts)
       end,
     })
+  end,
+})
+
+autocmds({ "FileType" }, {
+  pattern = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+  callback = function()
+    vim.b.autoformat = false
   end,
 })
