@@ -35,11 +35,4 @@ return {
       { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
     },
   },
-  {
-    "ray-x/forgit.nvim",
-    event = "BufRead",
-    dependencies = {
-      "ray-x/guihua.lua",
-    },
-  },
 }
