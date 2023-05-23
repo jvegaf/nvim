@@ -26,8 +26,6 @@ keymap("n", "<ESC><ESC>", ":nohlsearch<Bar>:echo<CR>", NS)
 keymap("n", "<C-a>", "gg<S-v>G", NS)
 
 keymap("n", "vv", "V", NS)
-keymap("n", "<leader>o", "o<Esc>", { noremap = true, silent = true, desc = "Insert line down" })
-keymap("n", "<leader>O", "O<Esc>", { noremap = true, silent = true, desc = "Insert line up" })
 
 keymap("n", "<leader>p", "<cmd>pu<cr>", { noremap = true, silent = true, desc = "Paste underline" })
 keymap("n", "<leader>P", "<cmd>pu!<cr>", { noremap = true, silent = true, desc = "Paste overline" })
