@@ -7,8 +7,8 @@ return {
     event = "VimEnter",
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     keys = {
-      { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "NvimTreeToggle" },
-      { "<leader>o", "<cmd>NvimTreeFocus<cr>", desc = "NvimTreeFocus" },
+      { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "NvimTree Toggle" },
+      { "<leader>o", "<cmd>NvimTreeFocus<cr>", desc = "NvimTree Focus" },
     },
     opts = {
       diagnostics = {

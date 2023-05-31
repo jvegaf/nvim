@@ -1,7 +1,17 @@
 return {
-  "mbbill/undotree",
+  "jiaoshijie/undotree",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+  },
   event = "BufReadPre",
+  opts = {},
   keys = {
-    { "<leader>cu", "<cmd>UndotreeToggle<CR>", desc = "Undotree toggle" },
+    {
+      "<leader>cu",
+      function()
+        require("undotree").toggle()
+      end,
+      desc = "Undotree toggle",
+    },
   },
 }

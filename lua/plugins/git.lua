@@ -5,17 +5,17 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
       -- TODO: complete keymaps
-      { "<leader>gS", "<cmd>Gitsigns toggle_signs<cr>", desc = "Toggle signs" },
+      { "<leader>ght", "<cmd>Gitsigns toggle_signs<cr>", desc = "Toggle signs" },
     },
   },
   {
     "sindrets/diffview.nvim",
-    event = "BufRead",
+    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
     keys = {
       { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Open diff" },
       { "<leader>gD", "<cmd>DiffviewClose<cr>", desc = "Close diff" },
-      { "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", desc = "View file history" },
-      { "<leader>gh", ":'<,'>DiffviewFileHistory<cr>", mode = { "v" }, desc = "View selected history" },
+      { "<leader>gf", "<cmd>DiffviewFileHistory %<cr>", desc = "View file history" },
+      { "<leader>gf", ":'<,'>DiffviewFileHistory<cr>", mode = { "v" }, desc = "View selected history" },
     },
   },
   {
@@ -33,6 +33,20 @@ return {
     cmd = "LazyGit",
     keys = {
       { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+    },
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "paopaol/telescope-git-diffs.nvim",
+    },
+    config = function()
+      require("telescope").load_extension("git_diffs")
+    end,
+    keys = {
+      { "<leader>gz", "<cmd>Telescope git_diffs  diff_commits<CR>", desc = "Diff commits" },
     },
   },
 }
