@@ -5,7 +5,7 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
       -- TODO: complete keymaps
-      { "<leader>gs", "<cmd>Gitsigns toggle_signs<cr>", desc = "Toggle signs" },
+      { "<leader>gS", "<cmd>Gitsigns toggle_signs<cr>", desc = "Toggle signs" },
     },
   },
   {

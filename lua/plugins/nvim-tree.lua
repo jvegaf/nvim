@@ -4,6 +4,7 @@ return {
     "nvim-tree/nvim-tree.lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     version = "*",
+    event = "VimEnter",
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     keys = {
       { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "NvimTreeToggle" },
