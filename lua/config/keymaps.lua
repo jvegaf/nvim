@@ -5,7 +5,7 @@
 local NS = { noremap = true, silent = true }
 
 -- Shorten function name
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 keymap("n", "<C-i>", "<C-i>", NS)
 
@@ -33,7 +33,7 @@ keymap("n", "<leader>P", "<cmd>pu!<cr>", { noremap = true, silent = true, desc =
 keymap("n", "<leader>R", "<cmd>source %<cr>", { noremap = true, desc = "Reload" })
 
 -- dont yank on visual paste
-keymap("v", "p", '"_dP', NS)
+keymap({ "v", "x" }, "p", '"_dP', NS)
 
 keymap("n", "<F1>", "<cmd>vertical help<cr>", { noremap = true, silent = true, desc = "Vertical Help" })
 
@@ -51,5 +51,4 @@ keymap(
   { noremap = true, silent = true, desc = "Close buffer" }
 )
 
-keymap("n", "<Tab>", "<cmd>BufferLineCycleNext<cr>", { noremap = true, silent = true, desc = "Next buffer" })
-keymap("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", { noremap = true, silent = true, desc = "Prev buffer" })
+keymap("n", "<leader>q", "<cmd>quit<cr>", { noremap = true, silent = true, desc = "Close Window" })
