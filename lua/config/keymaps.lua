@@ -51,4 +51,6 @@ keymap(
   { noremap = true, silent = true, desc = "Close buffer" }
 )
 
+keymap("n", "zz", "<cmd>wq<cr>", { noremap = true, silent = true, desc = "Save Buffer and Close" })
+
 keymap("n", "<leader>q", "<cmd>quit<cr>", { noremap = true, silent = true, desc = "Close Window" })
