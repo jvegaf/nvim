@@ -27,6 +27,8 @@ keymap("n", "<C-a>", "gg<S-v>G", NS)
 
 keymap("n", "vv", "V", NS)
 
+keymap("i", "jj", "<ESC>", NS)
+
 keymap("n", "<leader>p", "<cmd>pu<cr>", { noremap = true, silent = true, desc = "Paste underline" })
 keymap("n", "<leader>P", "<cmd>pu!<cr>", { noremap = true, silent = true, desc = "Paste overline" })
 
