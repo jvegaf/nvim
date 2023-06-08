@@ -1,6 +1,5 @@
 return {
   "abecodes/tabout.nvim",
-  event = "BufReadPre",
   opts = {
     tabkey = "<tab>", -- key to trigger tabout, set to an empty string to disable
     backwards_tabkey = "<s-tab>", -- key to trigger backwards tabout, set to an empty string to disable
