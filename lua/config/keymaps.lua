@@ -48,6 +48,13 @@ keymap("n", "<leader>Sh", "<cmd>checkhealth<cr>", { noremap = true, silent = tru
 
 keymap(
   "n",
+  "<Tab>",
+  "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal'})<cr>",
+  { noremap = true, silent = true, desc = "Buffers" }
+)
+
+keymap(
+  "n",
   "<A-q>",
   "<cmd>lua require('mini.bufremove').delete(0, false)<cr>",
   { noremap = true, silent = true, desc = "Close buffer" }
