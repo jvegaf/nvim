@@ -7,6 +7,7 @@ local codeium_wsl = {
         "nvim-lua/plenary.nvim",
         "hrsh7th/nvim-cmp",
       },
+      cmd = { "Codeium" },
       config = function()
         require("codeium").setup({})
       end,

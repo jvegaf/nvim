@@ -119,6 +119,9 @@ local settings = {
       includeInlayEnumMemberValueHints = true,
     },
   },
+  completions = {
+    completeFunctionCalls = true,
+  },
 }
 
 M.capabilities = capabilities

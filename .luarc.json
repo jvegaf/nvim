@@ -1,6 +1,7 @@
 {
     "diagnostics.globals": [
-        "local"
+        "local",
+        "vim"
     ],
     "workspace.library": [
         "C:\\Users\\jevf\\AppData\\Local\\nvim-data\\lazy\\neodev.nvim\\types\\stable",
