@@ -1,5 +1,4 @@
 vim.opt.clipboard = "unnamedplus" --- Copy-paste between vim and everything else
-vim.opt.shell = "zsh"
 
 local has_wsl = function()
   local output = vim.fn.systemlist("uname -r")

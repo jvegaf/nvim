@@ -11,11 +11,11 @@ return {
     },
     lazy = false,
   },
-  {
-    "catppuccin/nvim",
-    lazy = false,
-    name = "catppuccin",
-  },
+  -- {
+  --   "catppuccin/nvim",
+  --   lazy = false,
+  --   name = "catppuccin",
+  -- },
   -- {
   --   "LazyVim/LazyVim",
   --   opts = {
