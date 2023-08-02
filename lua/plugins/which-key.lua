@@ -2,6 +2,7 @@ return {
   "folke/which-key.nvim",
   opts = {
     defaults = {
+      ["<leader>r"] = { name = "+Refactor" },
       ["<leader>S"] = { name = "+System" },
       ["<leader>g"] = {
         -- require install gitui   https://github.com/extrawurst/gitui
