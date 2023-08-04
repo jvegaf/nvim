@@ -48,6 +48,13 @@ keymap("n", "<leader>Sh", "<cmd>checkhealth<cr>", { noremap = true, silent = tru
 
 keymap(
   "n",
+  "<leader>ub",
+  '<cmd>exec &bg=="light"? "set bg=dark" : "set bg=light"<cr>',
+  { noremap = true, silent = true, desc = "Toggle Background" }
+)
+
+keymap(
+  "n",
   "<Tab>",
   "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal'})<cr>",
   { noremap = true, silent = true, desc = "Buffers" }

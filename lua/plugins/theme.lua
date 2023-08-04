@@ -26,15 +26,15 @@ return {
   --     -- vim.cmd([[ colorscheme aurora ]])
   --   end,
   -- },
-  -- {
-  --   "catppuccin/nvim",
-  --   lazy = false,
-  --   name = "catppuccin",
-  -- },
+  {
+    "Mofiqul/vscode.nvim",
+    lazy = false,
+  },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
+      -- colorscheme = "tokyonight",
+      colorscheme = "vscode",
     },
   },
 }
