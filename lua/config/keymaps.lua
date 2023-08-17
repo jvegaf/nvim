@@ -29,11 +29,6 @@ keymap("n", "vv", "V", NS)
 
 keymap("i", "jj", "<ESC>", NS)
 
-keymap("n", "<leader>p", "<cmd>pu<cr>", { noremap = true, silent = true, desc = "Paste underline" })
-keymap("n", "<leader>P", "<cmd>pu!<cr>", { noremap = true, silent = true, desc = "Paste overline" })
-
-keymap("n", "<leader>R", "<cmd>source %<cr>", { noremap = true, desc = "Reload" })
-
 -- dont yank on visual paste
 keymap({ "v", "x" }, "p", '"_dP', NS)
 

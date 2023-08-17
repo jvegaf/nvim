@@ -31,6 +31,10 @@ return {
     lazy = false,
   },
   {
+    "sainnhe/sonokai",
+    lazy = false,
+  },
+  {
     "LazyVim/LazyVim",
     opts = {
       -- colorscheme = "tokyonight",
