@@ -1,3 +1,18 @@
+local function on_file_remove(args)
+  local ts_clients = vim.lsp.get_active_clients({ name = "tsserver" })
+  for _, ts_client in ipairs(ts_clients) do
+    ts_client.request("workspace/executeCommand", {
+      command = "_typescript.applyRenameFile",
+      arguments = {
+        {
+          sourceUri = vim.uri_from_fname(args.source),
+          targetUri = vim.uri_from_fname(args.destination),
+        },
+      },
+    })
+  end
+end
+
 return {
   {
     "b0o/SchemaStore.nvim",
@@ -20,6 +35,18 @@ return {
           vim.keymap.set("n", "<leader>cR", "TypescriptRenameFile", { desc = "Rename File", buffer = buffer })
         end
       end)
+    end,
+    ft = {
+      "typescript",
+      "typescriptreact",
+      "javascript",
+      "javascriptreact",
+    },
+  },
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    opts = function(_, opts)
+      table.insert(opts.sources, require("typescript.extensions.null-ls.code-actions"))
     end,
   },
   {
@@ -59,8 +86,6 @@ return {
             "sass",
             "scss",
             "less",
-            -- "javascript",
-            -- "typescript",
             "markdown",
           },
           init_options = {
@@ -110,5 +135,78 @@ return {
         -- ["*"] = function(server, opts) end,
       },
     },
+  },
+  {
+    "mfussenegger/nvim-dap",
+    optional = true,
+    dependencies = {
+      {
+        "williamboman/mason.nvim",
+        opts = function(_, opts)
+          opts.ensure_installed = opts.ensure_installed or {}
+          table.insert(opts.ensure_installed, "js-debug-adapter")
+        end,
+      },
+    },
+    opts = function()
+      local dap = require("dap")
+      if not dap.adapters["pwa-node"] then
+        require("dap").adapters["pwa-node"] = {
+          type = "server",
+          host = "localhost",
+          port = "${port}",
+          executable = {
+            command = "node",
+            -- 💀 Make sure to update this path to point to your installation
+            args = {
+              require("mason-registry").get_package("js-debug-adapter"):get_install_path()
+                .. "/js-debug/src/dapDebugServer.js",
+              "${port}",
+            },
+          },
+        }
+      end
+      for _, language in ipairs({ "typescript", "javascript" }) do
+        if not dap.configurations[language] then
+          dap.configurations[language] = {
+            {
+              type = "pwa-node",
+              request = "launch",
+              name = "Launch file",
+              program = "${file}",
+              cwd = "${workspaceFolder}",
+            },
+            {
+              type = "pwa-node",
+              request = "attach",
+              name = "Attach",
+              processId = require("dap.utils").pick_process,
+              cwd = "${workspaceFolder}",
+            },
+          }
+        end
+      end
+    end,
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = function(_, opts)
+      local events = require("neo-tree.events")
+      opts.event_handlers = {
+        {
+          event = events.FILE_MOVED,
+          handler = on_file_remove,
+        },
+        {
+          event = events.FILE_RENAMED,
+          handler = on_file_remove,
+        },
+      }
+    end,
+  },
+  {
+    "dmmulroy/tsc.nvim",
+    cmd = { "TSC" },
+    opts = {},
   },
 }
