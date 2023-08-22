@@ -27,6 +27,20 @@ return {
     opts = {},
   },
   {
+    "williamboman/mason-lspconfig.nvim",
+    opts = {
+      ensure_installed = {
+        "tsserver",
+        "eslint",
+        "lua_ls",
+        "pyright",
+        "emmet_ls",
+        "jsonls",
+        "yamlls",
+      },
+    },
+  },
+  {
     "jose-elias-alvarez/typescript.nvim",
     init = function()
       require("lazyvim.util").on_attach(function(client, buffer)
