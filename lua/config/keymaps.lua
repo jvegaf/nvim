@@ -20,7 +20,7 @@ map("n", "x", '"_x', NS)
 --   command_mode = "c",
 
 -- Cancel search highlighting with ESC
-map("n", "<ESC><ESC>", ":nohlsearch<Bar>:echo<CR>", NS)
+map("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", NS)
 
 -- Select all
 map("n", "<C-a>", "gg<S-v>G", NS)
@@ -34,7 +34,7 @@ map({ "v", "x" }, "p", '"_dP', NS)
 
 map("n", "<F1>", "<cmd>vertical help<cr>", { noremap = true, silent = true, desc = "Vertical Help" })
 
-map("n", "<leader>w", "<cmd>write<cr>", { noremap = true, silent = true, desc = "Save" })
+map("n", "<A-w>", "<cmd>write<cr>", { noremap = true, silent = true, desc = "Save" })
 
 -- System
 map("n", "<leader>Sd", "<cmd>Alpha<cr>", { noremap = true, silent = true, desc = "Dashboard" })
@@ -49,12 +49,15 @@ map(
   { noremap = true, silent = true, desc = "Toggle Background" }
 )
 
-map(
-  "n",
-  "<Tab>",
-  "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal'})<cr>",
-  { noremap = true, silent = true, desc = "Buffers" }
-)
+-- map(
+--   "n",
+--   "<Tab>",
+--   "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal'})<cr>",
+--   { noremap = true, silent = true, desc = "Buffers" }
+-- )
+
+map("n", "<Tab>", "<cmd>BufferLineCycleNext<cr>", { noremap = true, silent = true, desc = "Buffers" })
+map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", { noremap = true, silent = true, desc = "Buffers" })
 
 map(
   "n",
