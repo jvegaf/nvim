@@ -5,11 +5,11 @@
 local NS = { noremap = true, silent = true }
 
 -- Shorten function name
-local keymap = vim.keymap.set
+local map = vim.keymap.set
 
-keymap("n", "<C-i>", "<C-i>", NS)
+map("n", "<C-i>", "<C-i>", NS)
 
-keymap("n", "x", '"_x', NS)
+map("n", "x", '"_x', NS)
 
 -- Modes
 --   normal_mode = "n",
@@ -20,48 +20,49 @@ keymap("n", "x", '"_x', NS)
 --   command_mode = "c",
 
 -- Cancel search highlighting with ESC
-keymap("n", "<ESC><ESC>", ":nohlsearch<Bar>:echo<CR>", NS)
+map("n", "<ESC><ESC>", ":nohlsearch<Bar>:echo<CR>", NS)
 
 -- Select all
-keymap("n", "<C-a>", "gg<S-v>G", NS)
+map("n", "<C-a>", "gg<S-v>G", NS)
 
-keymap("n", "vv", "V", NS)
+map("n", "vv", "V", NS)
 
-keymap("i", "jj", "<ESC>", NS)
+map("i", "jj", "<ESC>", NS)
 
 -- dont yank on visual paste
-keymap({ "v", "x" }, "p", '"_dP', NS)
+map({ "v", "x" }, "p", '"_dP', NS)
 
-keymap("n", "<F1>", "<cmd>vertical help<cr>", { noremap = true, silent = true, desc = "Vertical Help" })
+map("n", "<F1>", "<cmd>vertical help<cr>", { noremap = true, silent = true, desc = "Vertical Help" })
 
-keymap("n", "<leader>w", "<cmd>write<cr>", { noremap = true, silent = true, desc = "Save" })
+map("n", "<leader>w", "<cmd>write<cr>", { noremap = true, silent = true, desc = "Save" })
 
-keymap("n", "<leader>Sd", "<cmd>Alpha<cr>", { noremap = true, silent = true, desc = "Dashboard" })
-keymap("n", "<leader>Sc", "<cmd>e $MYVIMRC<cr>", { noremap = true, silent = true, desc = "Config" })
-keymap("n", "<leader>Sn", "<cmd>Telescope notify<cr>", { noremap = true, silent = true, desc = "Notifications" })
-keymap("n", "<leader>Sh", "<cmd>checkhealth<cr>", { noremap = true, silent = true, desc = "Health" })
+-- System
+map("n", "<leader>Sd", "<cmd>Alpha<cr>", { noremap = true, silent = true, desc = "Dashboard" })
+map("n", "<leader>Sc", "<cmd>e $MYVIMRC<cr>", { noremap = true, silent = true, desc = "Config" })
+map("n", "<leader>Sn", "<cmd>Telescope notify<cr>", { noremap = true, silent = true, desc = "Notifications" })
+map("n", "<leader>Sh", "<cmd>checkhealth<cr>", { noremap = true, silent = true, desc = "Health" })
 
-keymap(
+map(
   "n",
   "<leader>ub",
   '<cmd>exec &bg=="light"? "set bg=dark" : "set bg=light"<cr>',
   { noremap = true, silent = true, desc = "Toggle Background" }
 )
 
-keymap(
+map(
   "n",
   "<Tab>",
   "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal'})<cr>",
   { noremap = true, silent = true, desc = "Buffers" }
 )
 
-keymap(
+map(
   "n",
   "<A-q>",
   "<cmd>lua require('mini.bufremove').delete(0, false)<cr>",
   { noremap = true, silent = true, desc = "Close buffer" }
 )
 
-keymap("n", "zz", "<cmd>wq<cr>", { noremap = true, silent = true, desc = "Save Buffer and Close" })
+map("n", "zz", "<cmd>wq<cr>", { noremap = true, silent = true, desc = "Save Buffer and Close" })
 
-keymap("n", "<leader>q", "<cmd>quit<cr>", { noremap = true, silent = true, desc = "Close Window" })
+map("n", "<leader>q", "<cmd>quit<cr>", { noremap = true, silent = true, desc = "Close Window" })
