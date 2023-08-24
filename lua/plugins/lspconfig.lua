@@ -24,7 +24,8 @@ return {
   },
   {
     "folke/neoconf.nvim",
-    opts = {},
+    cmd = "Neoconf",
+    config = true,
   },
   {
     "williamboman/mason-lspconfig.nvim",
@@ -41,33 +42,49 @@ return {
     },
   },
   {
-    "jose-elias-alvarez/typescript.nvim",
-    init = function()
-      require("lazyvim.util").on_attach(function(client, buffer)
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "folke/neoconf.nvim" },
+    opts = {},
+    config = function(_, opts)
+      require("plugins.lsp.utils").on_attach(function(client, bufnr)
         if client.name == "tsserver" then
-          vim.keymap.set("n", "<leader>co", "TypescriptOrganizeImports", { buffer = buffer, desc = "Organize Imports" })
-          vim.keymap.set("n", "<leader>cR", "TypescriptRenameFile", { desc = "Rename File", buffer = buffer })
+          vim.keymap.set(
+            "n",
+            "<leader>co",
+            "<cmd>TSToolsOrganizeImports<cr>",
+            { buffer = bufnr, desc = "Organize Imports" }
+          )
+          vim.keymap.set("n", "<leader>cO", "<cmd>TSToolsSortImports<cr>", { buffer = bufnr, desc = "Sort Imports" })
+          vim.keymap.set("n", "<leader>cu", "<cmd>TSToolsRemoveUnused<cr>", { buffer = bufnr, desc = "Removed Unused" })
+          vim.keymap.set(
+            "n",
+            "<leader>cz",
+            "<cmd>TSToolsGoToSourceDefinition<cr>",
+            { buffer = bufnr, desc = "Go To Source Definition" }
+          )
+          vim.keymap.set(
+            "n",
+            "<leader>cR",
+            "<cmd>TSToolsRemoveUnusedImports<cr>",
+            { buffer = bufnr, desc = "Removed Unused Imports" }
+          )
+          vim.keymap.set("n", "<leader>cF", "<cmd>TSToolsFixAll<cr>", { buffer = bufnr, desc = "Fix All" })
+          vim.keymap.set(
+            "n",
+            "<leader>cA",
+            "<cmd>TSToolsAddMissingImports<cr>",
+            { buffer = bufnr, desc = "Add Missing Imports" }
+          )
         end
       end)
-    end,
-    ft = {
-      "typescript",
-      "typescriptreact",
-      "javascript",
-      "javascriptreact",
-    },
-  },
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    opts = function(_, opts)
-      table.insert(opts.sources, require("typescript.extensions.null-ls.code-actions"))
+      require("typescript-tools").setup(opts)
     end,
   },
   {
     "neovim/nvim-lspconfig",
     dependencies = {
       "b0o/SchemaStore.nvim",
-      "jose-elias-alvarez/typescript.nvim",
+      "pmizio/typescript-tools.nvim",
       "lvimuser/lsp-inlayhints.nvim",
     },
     ---@class PluginLspOpts
@@ -87,9 +104,13 @@ return {
           },
         },
 
-        tsserver = {},
+        -- tsserver = {},
 
-        pyright = {},
+        eslint = {
+          settings = {
+            workingDirectory = { mode = "auto" },
+          },
+        },
 
         emmet_ls = {
           filetypes = {
@@ -128,25 +149,20 @@ return {
           },
         },
       },
-      -- you can do any additional lsp server setup here
-      -- return true if you don't want this server to be setup with lspconfig
-      ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
       setup = {
-        -- example to setup with typescript.nvim
-        tsserver = function(_, opts)
-          -- require("typescript").setup({ server = opts })
-          require("typescript").setup({
-            server = {
-              capabilities = require("plugins.configs.tsserver").capabilities,
-              handlers = require("plugins.configs.tsserver").handlers,
-              on_attach = require("plugins.configs.tsserver").on_attach,
-              settings = require("plugins.configs.tsserver").settings,
-            },
+        eslint = function()
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            callback = function(event)
+              local client = vim.lsp.get_active_clients({ bufnr = event.buf, name = "eslint" })[1]
+              if client then
+                local diag = vim.diagnostic.get(event.buf, { namespace = vim.lsp.diagnostic.get_namespace(client.id) })
+                if #diag > 0 then
+                  vim.cmd("EslintFixAll")
+                end
+              end
+            end,
           })
-          return true
         end,
-        -- Specify * to use this function as a fallback for any server
-        -- ["*"] = function(server, opts) end,
       },
     },
   },
