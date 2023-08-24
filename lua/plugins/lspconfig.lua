@@ -86,6 +86,14 @@ return {
       "b0o/SchemaStore.nvim",
       "pmizio/typescript-tools.nvim",
       "lvimuser/lsp-inlayhints.nvim",
+ {
+            "SmiteshP/nvim-navbuddy",
+            dependencies = {
+                "SmiteshP/nvim-navic",
+                "MunifTanjim/nui.nvim"
+            },
+            opts = { lsp = { auto_attach = true } }
+        }
     },
     ---@class PluginLspOpts
     opts = {
