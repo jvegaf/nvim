@@ -23,11 +23,6 @@ return {
     opts = {},
   },
   {
-    "folke/neoconf.nvim",
-    cmd = "Neoconf",
-    config = true,
-  },
-  {
     "williamboman/mason-lspconfig.nvim",
     opts = {
       ensure_installed = {
@@ -43,7 +38,9 @@ return {
   },
   {
     "pmizio/typescript-tools.nvim",
-    dependencies = { "folke/neoconf.nvim" },
+    dependencies = {
+      { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
+    },
     opts = {},
     config = function(_, opts)
       require("plugins.lsp.utils").on_attach(function(client, bufnr)
@@ -84,21 +81,21 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       "b0o/SchemaStore.nvim",
+      { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
       "pmizio/typescript-tools.nvim",
       "lvimuser/lsp-inlayhints.nvim",
- {
-            "SmiteshP/nvim-navbuddy",
-            dependencies = {
-                "SmiteshP/nvim-navic",
-                "MunifTanjim/nui.nvim"
-            },
-            opts = { lsp = { auto_attach = true } }
-        }
+      {
+        "SmiteshP/nvim-navbuddy",
+        dependencies = {
+          "SmiteshP/nvim-navic",
+          "MunifTanjim/nui.nvim",
+        },
+        opts = { lsp = { auto_attach = true } },
+        keys = { { "<leader>cs", "<cmd>lua require('nvim-navbuddy').open()<cr>", desc = "Symbols" } },
+      },
     },
-    ---@class PluginLspOpts
     opts = {
       ---@diagnostic disable-next-line: undefined-doc-name
-      --- @type lspconfig.options
       servers = {
 
         lua_ls = {
