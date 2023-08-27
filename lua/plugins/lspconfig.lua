@@ -38,9 +38,9 @@ return {
   },
   {
     "pmizio/typescript-tools.nvim",
-    dependencies = {
-      { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-    },
+    -- dependencies = {
+    --   { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
+    -- },
     opts = {},
     config = function(_, opts)
       require("plugins.lsp.utils").on_attach(function(client, bufnr)
@@ -81,7 +81,6 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       "b0o/SchemaStore.nvim",
-      { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
       "pmizio/typescript-tools.nvim",
       "lvimuser/lsp-inlayhints.nvim",
       {

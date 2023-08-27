@@ -39,8 +39,10 @@ autocmds("LspAttach", {
   end,
 })
 
+-- disable autoformat
+
 autocmds({ "FileType" }, {
-  pattern = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+  pattern = { " * " },
   callback = function()
     vim.b.autoformat = false
   end,
