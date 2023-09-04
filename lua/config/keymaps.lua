@@ -37,10 +37,10 @@ map("n", "<F1>", "<cmd>vertical help<cr>", { noremap = true, silent = true, desc
 map("n", "<A-w>", "<cmd>write<cr>", { noremap = true, silent = true, desc = "Save" })
 
 -- System
-map("n", "<leader>Sd", "<cmd>Alpha<cr>", { noremap = true, silent = true, desc = "Dashboard" })
-map("n", "<leader>Sc", "<cmd>e $MYVIMRC<cr>", { noremap = true, silent = true, desc = "Config" })
-map("n", "<leader>Sn", "<cmd>Telescope notify<cr>", { noremap = true, silent = true, desc = "Notifications" })
-map("n", "<leader>Sh", "<cmd>checkhealth<cr>", { noremap = true, silent = true, desc = "Health" })
+map("n", "<leader>sd", "<cmd>Alpha<cr>", { noremap = true, silent = true, desc = "Dashboard" })
+map("n", "<leader>sc", "<cmd>e $MYVIMRC<cr>", { noremap = true, silent = true, desc = "Config" })
+map("n", "<leader>sn", "<cmd>Telescope notify<cr>", { noremap = true, silent = true, desc = "Notifications" })
+map("n", "<leader>sh", "<cmd>checkhealth<cr>", { noremap = true, silent = true, desc = "Health" })
 
 map(
   "n",
