@@ -59,12 +59,6 @@ map(
 map("n", "<Tab>", "<cmd>BufferLineCycleNext<cr>", { noremap = true, silent = true, desc = "Buffers" })
 map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", { noremap = true, silent = true, desc = "Buffers" })
 
-map(
-  "n",
-  "<A-q>",
-  "<cmd>lua require('mini.bufremove').delete(0, false)<cr>",
-  { noremap = true, silent = true, desc = "Close buffer" }
-)
 
 map("n", "zz", "<cmd>wq<cr>", { noremap = true, silent = true, desc = "Save Buffer and Close" })
 

@@ -1,5 +1,5 @@
 return {
-{
+  {
     "echasnovski/mini.ai",
     -- keys = {
     --   { "a", mode = { "x", "o" } },
@@ -24,5 +24,15 @@ return {
     config = function(_, opts)
       require("mini.ai").setup(opts)
     end,
-}
+  },
+  {
+    "echasnovski/mini.bufremove",
+    version = false,
+    event = "VeryLazy",
+    opts = {},
+
+    keys = {
+      { "<A-q>", function() require("mini.bufremove").delete(0, false) end, desc = "Close buffer" },
+    },
+  },
 }
