@@ -1,6 +1,9 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
 
+
+require("config.options")
+require("config.keymaps")
 require("config.lazy")
+require("config.autocmds")
 
 local is_lin = vim.loop.os_uname().sysname == "Linux"
 local is_win = vim.loop.os_uname().sysname == "Windows_NT"

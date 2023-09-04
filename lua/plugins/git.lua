@@ -35,18 +35,4 @@ return {
       { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
     },
   },
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim",
-      "paopaol/telescope-git-diffs.nvim",
-    },
-    config = function()
-      require("telescope").load_extension("git_diffs")
-    end,
-    keys = {
-      { "<leader>gz", "<cmd>Telescope git_diffs  diff_commits<CR>", desc = "Diff commits" },
-    },
-  },
 }

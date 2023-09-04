@@ -1,10 +1,8 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
+
 local options = {
   backup = false, -- creates a backup file
   clipboard = "unnamedplus", -- allows neovim to access the system clipboard
-  cmdheight = 2, -- more space in the neovim command line for displaying messages
+  -- cmdheight = 2, -- more space in the neovim command line for displaying messages
   completeopt = { "menuone", "noselect" }, -- mostly just for cmp
   conceallevel = 0, -- so that `` is visible in markdown files
   cursorline = true, -- highlight the current line
@@ -15,7 +13,6 @@ local options = {
   foldenable = true,
   foldlevel = 99,
   foldlevelstart = 99,
-  guifont = "ComicCodeLigatures NF:h11",
   hlsearch = true, -- highlight all matches on previous search pattern
   ignorecase = true, -- ignore case in search patterns
   incsearch = false,
@@ -25,7 +22,6 @@ local options = {
   numberwidth = 4, -- set number column width to 2 {default 4}
   pumheight = 15, -- pop up menu height
   relativenumber = true, -- set relative numbered lines
-  ruler = true,
   shiftwidth = 2, -- the number of spaces inserted for each indentation
   showcmd = true,
   showmode = true, -- we don't need to see things like -- INSERT -- anymore
@@ -49,62 +45,7 @@ local options = {
 }
 
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
--- vim.opt.fillchars = vim.opt.fillchars + 'eob: '
--- vim.opt.fillchars:append {
---   stl = ' ',
--- }
-
-vim.opt.shortmess:append("c")
-
-vim.opt.diffopt = { "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal" }
-
-vim.opt.backspace = { "start", "eol", "indent" }
-vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
-vim.opt.wildignore:append({ "*/node_modules/*" })
-
--- Undercurl
-vim.cmd([[let &t_Cs = "\e[4:3m"]])
-vim.cmd([[let &t_Ce = "\e[4:0m"]])
-
--- Turn off paste mode when leaving insert
-vim.api.nvim_create_autocmd("InsertLeave", {
-  pattern = "*",
-  command = "set nopaste",
-})
-
--- Helpful related items:
---   1. :center, :left, :right
---   2. gw{motion} - Put cursor back after formatting motion.
---
--- -- TODO: w, {v, b, l}
--- vim.opt.formatoptions = vim.opt.formatoptions
---     - "a" -- Auto formatting is BAD.
---     - "t" -- Don't auto format my code. I got linters for that.
---     + "c" -- In general, I like it when comments respect textwidth
---     + "q" -- Allow formatting comments w/ gq
---     - "o" -- O and o, don't continue comments
---     + "r" -- But do continue when pressing enter.
---     + "n" -- Indent past the formatlistpat, not underneath it.
---     + "j" -- Auto-remove comments if possible.
-
--- Add asterisks in block comments
-vim.opt.formatoptions:append({ "r" })
-
-vim.wo.signcolumn = "yes"
 
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
-
-vim.cmd("set whichwrap+=<,>,[,],h,l")
-vim.cmd([[set iskeyword+=-]])
-vim.cmd([[set formatoptions-=cro]]) -- TODO: this doesn't seem to work
-
-vim.filetype.add({
-  extension = {
-    conf = "dosini",
-  },
-})
---
--- vim.g.mapleader = ","
--- vim.g.maplocalleader = ","
