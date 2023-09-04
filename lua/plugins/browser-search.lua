@@ -1,13 +1,13 @@
 return {
   "jvegaf/browse.nvim",
   dependencies = {
-    'nvim-telescope/telescope.nvim',
+    "nvim-telescope/telescope.nvim",
   },
   event = "VeryLazy",
   keys = {
     { "<A-s>", "<cmd>VisualSearch<cr>", mode = "v", desc = "Search on web" },
     { "<leader>s", "<cmd>VisualBookmarks<cr>", mode = "v", desc = "Search on web bookmarks" },
-    { "<leader>i", "<cmd>InputSearch<cr>", desc = "Search on web bookmarks" },
+    { "<leader>i", "<cmd>InputSearch<cr>", desc = "Search on web" },
   },
   config = function()
     -- code
@@ -65,5 +65,5 @@ return {
     command("MdnSearch", function()
       browse.mdn.search()
     end)
-  end
+  end,
 }
