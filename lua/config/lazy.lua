@@ -6,24 +6,23 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
-require("lazy").setup({
-  spec = { { import = "plugins" } },
-  defaults = {
-    lazy = false,
-    -- It's recommended to leave version=false for now, since a lot the plugin that support versioning,
-    -- have outdated releases, which may break your Neovim install.
-    version = false, -- always use the latest git commit
-    -- version = "*", -- try installing the latest stable version for plugins that support semver
+require("lazy").setup( "plugins", {
+  defaults = { lazy = true },
+  install = { missing = true, colorscheme = { "tokyonight" } },
+  checker = { enabled = true },
+  change_detection = {
+    enabled = true,
+    notify = true,
   },
-  install = { colorscheme = { "tokyonight", "habamax" } },
-  checker = { enabled = true }, -- automatically check for plugin updates
   performance = {
+    cache = {
+      enabled = true,
+    },
     rtp = {
-      -- disable some rtp plugins
       disabled_plugins = {
         "gzip",
-        -- "matchit",
-        -- "matchparen",
+        "matchit",
+        "matchparen",
         "netrwPlugin",
         "tarPlugin",
         "tohtml",
@@ -31,5 +30,9 @@ require("lazy").setup({
         "zipPlugin",
       },
     },
+  },
+  debug = false,
+  ui = {
+    border = "rounded",
   },
 })
