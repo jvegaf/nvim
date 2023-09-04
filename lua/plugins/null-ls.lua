@@ -15,6 +15,7 @@ return {
         null_ls.builtins.formatting.jq.with({ filetypes = { "json" } }),
         null_ls.builtins.formatting.clang_format,
         null_ls.builtins.formatting.shfmt,
+        null_ls.builtins.formatting.stylua,
         null_ls.builtins.diagnostics.shellcheck,
       }
     })

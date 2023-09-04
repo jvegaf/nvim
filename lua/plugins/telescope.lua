@@ -14,8 +14,13 @@ return {
     -- stylua: ignore
     {"<leader>bv", function() require("telescope").extensions.file_browser.file_browser() end, desc = "Browse Files"},
     { "<leader>fs", function() require 'telescope'.extensions.luasnip.luasnip {} end, desc = "Search snippets" },
+    { "<leader>ff", function() require 'telescope'.builtin.find_files() end, desc = "Find Files" },
+    { "<leader>fh", function() require 'telescope'.builtin.help_tags() end, desc = "Find Help Tags" },
+    { "<leader><Space>", function() require 'telescope'.builtin.git_files() end, desc = "Find Git Files" },
+    { "<leader>fw", function() require 'telescope'.builtin.grep_string({ search = vim.fn.input("Grep > ") }) end, desc = "Find Text" },
     { "<leader>u", function() require 'telescope'.extensions.undo.undo() end, desc = "Undo View" },
     { "<leader>gz", "<cmd>Telescope git_diffs  diff_commits<CR>", desc = "Diff commits" },
+    { "<leader>cs", "<cmd>Telescope symbols <cr>", desc = "Symbols" },
   },
   opts = {
     extensions = {

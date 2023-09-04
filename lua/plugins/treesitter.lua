@@ -2,6 +2,7 @@ return {
   "nvim-treesitter/nvim-treesitter",
   dependencies = {
     "nvim-treesitter/playground",
+    "nvim-treesitter/nvim-treesitter-textobjects",
     "nvim-treesitter/nvim-treesitter-context",
     "windwp/nvim-ts-autotag",
   },
@@ -21,8 +22,6 @@ return {
       "toml",
       "typescript",
       "vim",
-      "rust",
-      "toml",
       "yaml",
     },
 

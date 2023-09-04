@@ -1,4 +1,5 @@
 return {
+{
     "echasnovski/mini.ai",
     -- keys = {
     --   { "a", mode = { "x", "o" } },
@@ -23,4 +24,5 @@ return {
     config = function(_, opts)
       require("mini.ai").setup(opts)
     end,
+}
 }

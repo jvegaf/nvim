@@ -34,7 +34,7 @@ map({ "v", "x" }, "p", '"_dP', NS)
 
 map("n", "<F1>", "<cmd>vertical help<cr>", { noremap = true, silent = true, desc = "Vertical Help" })
 
-map("n", "<A-w>", "<cmd>write<cr>", { noremap = true, silent = true, desc = "Save" })
+map("n", "<leader>w", "<cmd>write<cr>", { noremap = true, silent = true, desc = "Save" })
 
 -- System
 map("n", "<leader>sd", "<cmd>Alpha<cr>", { noremap = true, silent = true, desc = "Dashboard" })
@@ -70,15 +70,15 @@ map("n", "zz", "<cmd>wq<cr>", { noremap = true, silent = true, desc = "Save Buff
 
 map("n", "<leader>q", "<cmd>quit<cr>", { noremap = true, silent = true, desc = "Close Window" })
 
-map("i", "<A-l>", function()
-  return vim.fn["codeium#Accept"]()
-end, { expr = true })
-map("i", "<A-j>", function()
-  return vim.fn["codeium#CycleCompletions"](1)
-end, { expr = true })
-map("i", "<A-k>", function()
-  return vim.fn["codeium#CycleCompletions"](-1)
-end, { expr = true })
-map("i", "<A-x>", function()
-  return vim.fn["codeium#Clear"]()
-end, { expr = true })
+-- map("i", "<A-l>", function()
+--   return vim.fn["codeium#Accept"]()
+-- end, { expr = true })
+-- map("i", "<A-j>", function()
+--   return vim.fn["codeium#CycleCompletions"](1)
+-- end, { expr = true })
+-- map("i", "<A-k>", function()
+--   return vim.fn["codeium#CycleCompletions"](-1)
+-- end, { expr = true })
+-- map("i", "<A-x>", function()
+--   return vim.fn["codeium#Clear"]()
+-- end, { expr = true })

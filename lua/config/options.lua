@@ -44,6 +44,9 @@ local options = {
   winbar = "%=%m %f",
 }
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
 for k, v in pairs(options) do
