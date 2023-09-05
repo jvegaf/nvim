@@ -83,15 +83,6 @@ return {
       "b0o/SchemaStore.nvim",
       "pmizio/typescript-tools.nvim",
       "lvimuser/lsp-inlayhints.nvim",
-      {
-        "SmiteshP/nvim-navbuddy",
-        dependencies = {
-          "SmiteshP/nvim-navic",
-          "MunifTanjim/nui.nvim",
-        },
-        opts = { lsp = { auto_attach = true } },
-        keys = { { "<leader>cs", "<cmd>lua require('nvim-navbuddy').open()<cr>", desc = "Symbols" } },
-      },
     },
     opts = {
       ---@diagnostic disable-next-line: undefined-doc-name
@@ -194,7 +185,7 @@ return {
             -- 💀 Make sure to update this path to point to your installation
             args = {
               require("mason-registry").get_package("js-debug-adapter"):get_install_path()
-                .. "/js-debug/src/dapDebugServer.js",
+              .. "/js-debug/src/dapDebugServer.js",
               "${port}",
             },
           },
@@ -236,6 +227,7 @@ return {
           handler = on_file_remove,
         },
       }
+      opts.close_if_last_window = true
     end,
   },
   {
