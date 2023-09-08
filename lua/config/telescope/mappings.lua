@@ -35,6 +35,7 @@ vim.api.nvim_set_keymap(
 )
 
 map_tele("<leader>ff", "project_files", { desc = "Open Project files" })
+map_tele("<leader>fr", "oldfiles", { desc = "Find recent files" })
 map_tele("<leader>gb", "branches", { desc = "Git Branches selector" })
 map_tele("<leader>fw", "grep_word", { desc = "Grep word under cursor" })
 map_tele("<leader>fs", "grep_string", { desc = "Grep provided input string" })
