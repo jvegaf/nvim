@@ -1,4 +1,4 @@
-{
+return {
   "ahmedkhalf/project.nvim",
   opts = {},
   event = "VeryLazy",

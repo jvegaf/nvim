@@ -92,7 +92,6 @@ return {
       },
     }
   end,
-  ["nil_ls"] = default,
   ["tsserver"] = function()
     return {
       on_attach = lsp_attach,
