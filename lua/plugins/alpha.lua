@@ -45,10 +45,11 @@ return {
 
         -- local now = os.date "%d-%m-%Y %H:%M:%S"
         local version = "   v" .. vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch
-        local fortune = require "alpha.fortune"
-        local quote = table.concat(fortune(), "\n")
+        -- local fortune = require "alpha.fortune"
+        -- local quote = table.concat(fortune(), "\n")
         local plugins = "⚡Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
-        local footer = "\t" .. version .. "\t" .. plugins .. "\n" .. quote
+        -- local footer = "\t" .. version .. "\t" .. plugins .. "\n" .. quote
+        local footer = "\t" .. version .. "\t" .. plugins
         dashboard.section.footer.val = footer
         pcall(vim.cmd.AlphaRedraw)
       end,

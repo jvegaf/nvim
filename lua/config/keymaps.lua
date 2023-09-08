@@ -19,6 +19,27 @@ map("n", "x", '"_x', NS)
 --   term_mode = "t",
 --   command_mode = "c",
 
+-- Normal --
+-- Better window navigation
+map("n", "<C-h>", "<C-w>h", NS)
+map("n", "<C-j>", "<C-w>j", NS)
+map("n", "<C-k>", "<C-w>k", NS)
+map("n", "<C-l>", "<C-w>l", NS)
+
+-- Resize with arrows
+map("n", "<C-Up>", ":resize -2<CR>", NS)
+map("n", "<C-Down>", ":resize +2<CR>", NS)
+map("n", "<C-Left>", ":vertical resize -2<CR>", NS)
+map("n", "<C-Right>", ":vertical resize +2<CR>", NS)
+
+-- Move Lines
+map("n", "<A-j>", ":m .+1<CR>==", NS)
+map("n", "<A-k>", ":m .-2<CR>==", NS)
+map("v", "<A-j>", ":m '>+1<CR>gv=gv", NS)
+map("v", "<A-k>", ":m '<-2<CR>gv=gv", NS)
+-- map("i", "<A-j>", "<Esc>:m .+1<CR>==gi", NS)
+-- map("i", "<A-k>", "<Esc>:m .-2<CR>==gi", NS)
+
 -- Cancel search highlighting with ESC
 map("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", NS)
 
@@ -28,6 +49,7 @@ map("n", "<C-a>", "gg<S-v>G", NS)
 map("n", "vv", "V", NS)
 
 map("i", "jj", "<ESC>", NS)
+map("i", "kk", "<ESC>", NS)
 
 -- dont yank on visual paste
 map({ "v", "x" }, "p", '"_dP', NS)
@@ -58,7 +80,6 @@ map(
 
 map("n", "<Tab>", "<cmd>BufferLineCycleNext<cr>", { noremap = true, silent = true, desc = "Buffers" })
 map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", { noremap = true, silent = true, desc = "Buffers" })
-
 
 map("n", "zz", "<cmd>wq<cr>", { noremap = true, silent = true, desc = "Save Buffer and Close" })
 

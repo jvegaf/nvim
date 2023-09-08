@@ -4,7 +4,6 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
   },
-  opts = {},
   keys = {
     { "<leader>rr", "<cmd>lua require('refactoring').select_refactor()<cr>", mode = { "n", "x" }, desc = "Refactor" },
     {
@@ -38,4 +37,8 @@ return {
       desc = "Extract Block to file",
     },
   },
+  config = function()
+    require("refactoring").setup({})
+    require("telescope").load_extension("refactoring")
+  end,
 }
