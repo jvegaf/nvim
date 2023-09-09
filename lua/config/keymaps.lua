@@ -37,8 +37,6 @@ map("n", "<A-j>", ":m .+1<CR>==", NS)
 map("n", "<A-k>", ":m .-2<CR>==", NS)
 map("v", "<A-j>", ":m '>+1<CR>gv=gv", NS)
 map("v", "<A-k>", ":m '<-2<CR>gv=gv", NS)
--- map("i", "<A-j>", "<Esc>:m .+1<CR>==gi", NS)
--- map("i", "<A-k>", "<Esc>:m .-2<CR>==gi", NS)
 
 -- Cancel search highlighting with ESC
 map("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", NS)
@@ -53,8 +51,6 @@ map("i", "kk", "<ESC>", NS)
 
 -- dont yank on visual paste
 map({ "v", "x" }, "p", '"_dP', NS)
-
-map("n", "<F1>", "<cmd>vertical help<cr>", { noremap = true, silent = true, desc = "Vertical Help" })
 
 map("n", "<leader>w", "<cmd>write<cr>", { noremap = true, silent = true, desc = "Save" })
 

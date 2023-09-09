@@ -15,9 +15,9 @@ null_ls.setup {
 }
 
 vim.keymap.set({ "n", "v" }, "<leader>xc", vim.lsp.buf.code_action, {desc = "LSP (null ls) Code actions"})
-vim.keymap.set("n", "gf", function()
-  return vim.lsp.buf.format { async = false, timeout_ms = 10000 }
-end, {desc = "LSP (null ls) Format file"})
+vim.keymap.set("n", "gf", function() return vim.lsp.buf.format { async = false, timeout_ms = 10000 } end, {desc = "LSP (null ls) Format file"})
+vim.keymap.set("n", "<leader>ln", "<cmd>NullLsInfo<cr>", {desc = "Null Ls Info"})
+
 
 -- function to toogle and possible restart it
 vim.api.nvim_create_user_command("NullLsToggle", function()
