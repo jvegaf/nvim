@@ -59,6 +59,8 @@ map("n", "<leader>sd", "<cmd>Alpha<cr>", { noremap = true, silent = true, desc =
 map("n", "<leader>sc", "<cmd>e $MYVIMRC<cr>", { noremap = true, silent = true, desc = "Config" })
 map("n", "<leader>sn", "<cmd>Telescope notify<cr>", { noremap = true, silent = true, desc = "Notifications" })
 map("n", "<leader>sh", "<cmd>checkhealth<cr>", { noremap = true, silent = true, desc = "Health" })
+map("n", "<leader>sm", "<cmd>Mason<cr>", { noremap = true, silent = true, desc = "Mason" })
+map("n", "<leader>sl", "<cmd>Lazy<cr>", { noremap = true, silent = true, desc = "Lazy" })
 
 map(
   "n",
