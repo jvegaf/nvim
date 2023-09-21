@@ -8,7 +8,7 @@ return {
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     keys = {
       { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "NvimTree Toggle" },
-      { "<leader>o", "<cmd>NvimTreeFocus<cr>", desc = "NvimTree Focus" },
+      { "<leader>o", "<cmd>NvimTreeFocus<cr>",  desc = "NvimTree Focus" },
     },
     opts = {
       diagnostics = {
@@ -44,7 +44,7 @@ return {
         update_root = true,
       },
       git = {
-        timeout = 500,
+        timeout = 800,
       },
       actions = {
         open_file = {
