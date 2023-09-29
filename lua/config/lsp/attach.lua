@@ -14,7 +14,7 @@ return function(client, bufnr)
   vim.keymap.set("n", "<leader>lr", ":LspRestart<cr>", { noremap = true, desc = "LSP Restart Server" })
   vim.keymap.set("n", "<leader>li", ":LspInfo<cr>", { noremap = true, desc = "LSP Info" })
   vim.keymap.set({ "n", "v" }, "<leader>xc", vim.lsp.buf.code_action, { buffer = 0, desc = "LSP Code actions" })
-  vim.keymap.set("n", "gf", function()
+  vim.keymap.set("n", "gq", function()
     return vim.lsp.buf.format {
       async = false,
       timeout_ms = 10000,
@@ -28,7 +28,7 @@ return function(client, bufnr)
   telescope_mapper("<leader>ls", "find_symbol", { buffer = true, desc = "LSP find symbol on the project" })
   telescope_mapper("<leader>ld", "lsp_document_symbols", { buffer = true, desc = "LSP document symbols" })
   telescope_mapper("gd", "lsp_definitions", { buffer = true, desc = "LSP go to definition" })
-  telescope_mapper("gy", "lsp_type_definitions", { buffer = true, desc = "LSP go to type definition" })
+  telescope_mapper("gt", "lsp_type_definitions", { buffer = true, desc = "LSP go to type definition" })
 
   vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 

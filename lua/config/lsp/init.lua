@@ -1,4 +1,5 @@
 -- LSP configuration
+require("neoconf").setup({})
 
 local lspconfig = require "lspconfig"
 local servers = require "config.lsp.servers"

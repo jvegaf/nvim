@@ -1,4 +1,4 @@
-local lsp_attach = require "config.lsp.attach"
+local lsp_attach = require("config.lsp.attach")
 
 local lsp_flags = {
   debounce_text_changes = 150,
@@ -49,7 +49,7 @@ return {
       on_attach = lsp_attach,
       flags = lsp_flags,
     }
-    if vim.fn.executable "html-languageserver" == 1 then
+    if vim.fn.executable("html-languageserver") == 1 then
       config.cmd = { "html-languageserver", "--stdio" }
     end
 
@@ -60,7 +60,7 @@ return {
       on_attach = lsp_attach,
       flags = lsp_flags,
     }
-    if vim.fn.executable "json-languageserver" == 1 then
+    if vim.fn.executable("json-languageserver") == 1 then
       config.cmd = { "json-languageserver", "--stdio" }
     end
 
@@ -120,6 +120,18 @@ return {
           },
         },
       },
+    }
+  end,
+  ["jdtls"] = function()
+    return {
+      on_attach = lsp_attach,
+      flags = lsp_flags,
+    }
+  end,
+  ["lemminx"] = function()
+    return {
+      on_attach = lsp_attach,
+      flags = lsp_flags,
     }
   end,
 }

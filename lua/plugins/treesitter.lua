@@ -10,6 +10,7 @@ return {
     ensure_installed = {
       "bash",
       "html",
+      "java",
       "javascript",
       "json",
       "jsonc",
@@ -22,6 +23,7 @@ return {
       "toml",
       "typescript",
       "vim",
+      "xml",
       "yaml",
     },
 
@@ -30,7 +32,7 @@ return {
 
     -- Automatically install missing parsers when entering buffer
     -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-    auto_install = true,
+    auto_install = false,
 
     highlight = {
       -- `false` will disable the whole extension
@@ -43,4 +45,7 @@ return {
       additional_vim_regex_highlighting = false,
     },
   },
+  config = function(_, opts)
+    require("nvim-treesitter.configs").setup(opts)
+  end,
 }
