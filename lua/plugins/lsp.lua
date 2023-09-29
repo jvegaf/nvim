@@ -57,18 +57,6 @@ return {
       local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
       local workspace_dir = vim.fn.stdpath("data") .. "/site/java/workspace-root/" .. project_name
 
-      -- get the current OS
-      local os
-
-      if vim.fn.has("mac") == 1 then
-        os = "mac"
-      elseif vim.fn.has("unix") == 1 then
-        os = "linux"
-      elseif vim.fn.has("win32") == 1 then
-        os = "win"
-      end
-
-      os.execute("mkdir " .. workspace_dir)
 
       local defaults = {
         cmd = {
