@@ -15,6 +15,13 @@ end
 
 return {
   {
+    "folke/neoconf.nvim",
+    cmd = "Neoconf",
+    config = function()
+      require("neoconf").setup()
+    end,
+  },
+  {
     "b0o/SchemaStore.nvim",
     version = false, -- last release is way too old
   },
@@ -38,11 +45,12 @@ return {
   },
   {
     "pmizio/typescript-tools.nvim",
-    -- dependencies = {
-    --   { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-    -- },
+    dependencies = {
+      { "folke/neoconf.nvim" },
+    },
     opts = {},
     config = function(_, opts)
+      require("neoconf").setup()
       require("plugins.lsp.utils").on_attach(function(client, bufnr)
         if client.name == "tsserver" then
           vim.keymap.set(
@@ -80,6 +88,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
+      "folke/neoconf.nvim",
       "b0o/SchemaStore.nvim",
       "pmizio/typescript-tools.nvim",
       "lvimuser/lsp-inlayhints.nvim",

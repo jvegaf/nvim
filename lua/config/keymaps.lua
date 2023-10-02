@@ -49,6 +49,16 @@ map(
   { noremap = true, silent = true, desc = "Toggle Background" }
 )
 
+map("n", "gq", function()
+  return vim.lsp.buf.format {
+    async = false,
+    timeout_ms = 10000,
+    filter = function(cli)
+      return cli.name ~= "lua_ls"
+    end,
+  }
+end, { buffer = 0, desc = "LSP format file" })
+
 -- map(
 --   "n",
 --   "<Tab>",

@@ -44,7 +44,7 @@ return {
         update_root = true,
       },
       git = {
-        timeout = 500,
+        timeout = 800,
       },
       actions = {
         open_file = {
