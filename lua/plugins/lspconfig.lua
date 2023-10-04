@@ -15,13 +15,6 @@ end
 
 return {
   {
-    "folke/neoconf.nvim",
-    cmd = "Neoconf",
-    config = function()
-      require("neoconf").setup()
-    end,
-  },
-  {
     "b0o/SchemaStore.nvim",
     version = false, -- last release is way too old
   },
@@ -44,53 +37,10 @@ return {
     },
   },
   {
-    "pmizio/typescript-tools.nvim",
-    dependencies = {
-      { "folke/neoconf.nvim" },
-    },
-    opts = {},
-    config = function(_, opts)
-      require("neoconf").setup()
-      require("plugins.lsp.utils").on_attach(function(client, bufnr)
-        if client.name == "tsserver" then
-          vim.keymap.set(
-            "n",
-            "<leader>co",
-            "<cmd>TSToolsOrganizeImports<cr>",
-            { buffer = bufnr, desc = "Organize Imports" }
-          )
-          vim.keymap.set("n", "<leader>cO", "<cmd>TSToolsSortImports<cr>", { buffer = bufnr, desc = "Sort Imports" })
-          vim.keymap.set("n", "<leader>cu", "<cmd>TSToolsRemoveUnused<cr>", { buffer = bufnr, desc = "Removed Unused" })
-          vim.keymap.set(
-            "n",
-            "<leader>cz",
-            "<cmd>TSToolsGoToSourceDefinition<cr>",
-            { buffer = bufnr, desc = "Go To Source Definition" }
-          )
-          vim.keymap.set(
-            "n",
-            "<leader>cR",
-            "<cmd>TSToolsRemoveUnusedImports<cr>",
-            { buffer = bufnr, desc = "Removed Unused Imports" }
-          )
-          vim.keymap.set("n", "<leader>cF", "<cmd>TSToolsFixAll<cr>", { buffer = bufnr, desc = "Fix All" })
-          vim.keymap.set(
-            "n",
-            "<leader>cA",
-            "<cmd>TSToolsAddMissingImports<cr>",
-            { buffer = bufnr, desc = "Add Missing Imports" }
-          )
-        end
-      end)
-      require("typescript-tools").setup(opts)
-    end,
-  },
-  {
     "neovim/nvim-lspconfig",
     dependencies = {
       "folke/neoconf.nvim",
       "b0o/SchemaStore.nvim",
-      "pmizio/typescript-tools.nvim",
       "lvimuser/lsp-inlayhints.nvim",
     },
     opts = {
@@ -222,23 +172,23 @@ return {
       end
     end,
   },
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    opts = function(_, opts)
-      local events = require("neo-tree.events")
-      opts.event_handlers = {
-        {
-          event = events.FILE_MOVED,
-          handler = on_file_remove,
-        },
-        {
-          event = events.FILE_RENAMED,
-          handler = on_file_remove,
-        },
-      }
-      opts.close_if_last_window = true
-    end,
-  },
+  -- {
+  --   "nvim-neo-tree/neo-tree.nvim",
+  --   opts = function(_, opts)
+  --     local events = require("neo-tree.events")
+  --     opts.event_handlers = {
+  --       {
+  --         event = events.FILE_MOVED,
+  --         handler = on_file_remove,
+  --       },
+  --       {
+  --         event = events.FILE_RENAMED,
+  --         handler = on_file_remove,
+  --       },
+  --     }
+  --     opts.close_if_last_window = true
+  --   end,
+  -- },
   {
     "dmmulroy/tsc.nvim",
     cmd = { "TSC" },

@@ -1,17 +1,17 @@
 return {
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      capabilities = {
-        textDocument = {
-          foldingRange = {
-            dynamicRegistration = false,
-            lineFoldingOnly = true,
-          },
-        },
-      },
-    },
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   opts = {
+  --     capabilities = {
+  --       textDocument = {
+  --         foldingRange = {
+  --           dynamicRegistration = false,
+  --           lineFoldingOnly = true,
+  --         },
+  --       },
+  --     },
+  --   },
+  -- },
   {
     "luukvbaal/statuscol.nvim",
     config = function()
@@ -19,8 +19,8 @@ return {
       require("statuscol").setup({
         relculright = true,
         segments = {
-          { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
-          { text = { "%s" }, click = "v:lua.ScSa" },
+          { text = { builtin.foldfunc },      click = "v:lua.ScFa" },
+          { text = { "%s" },                  click = "v:lua.ScSa" },
           { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
         },
       })
