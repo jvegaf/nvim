@@ -3,11 +3,11 @@ return {
     "folke/tokyonight.nvim",
     opts = {
       style = "night",
-      transparent = true,
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
-      },
+      -- transparent = true,
+      -- styles = {
+      --   sidebars = "transparent",
+      --   floats = "transparent",
+      -- },
     },
     lazy = false,
   },
@@ -37,8 +37,8 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
-      -- colorscheme = "vscode",
+      -- colorscheme = "tokyonight",
+      colorscheme = "vscode",
     },
   },
 }
