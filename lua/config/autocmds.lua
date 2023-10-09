@@ -42,7 +42,7 @@ autocmds("LspAttach", {
 -- disable autoformat
 
 autocmds({ "FileType" }, {
-  pattern = { " * " },
+  pattern = { " typescript " },
   callback = function()
     vim.b.autoformat = false
   end,

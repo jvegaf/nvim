@@ -39,6 +39,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
+      "jose-elias-alvarez/typescript.nvim",
       "folke/neoconf.nvim",
       "b0o/SchemaStore.nvim",
       "lvimuser/lsp-inlayhints.nvim",
@@ -58,7 +59,7 @@ return {
           },
         },
 
-        -- tsserver = {},
+        tsserver = {},
 
         eslint = {
           settings = {
@@ -104,6 +105,20 @@ return {
         },
       },
       setup = {
+        -- example to setup with typescript.nvim
+        tsserver = function(_, opts)
+          -- require("typescript").setup({ server = opts })
+          require("typescript").setup({
+            server = {
+              capabilities = require("plugins.configs.tsserver").capabilities,
+              handlers = require("plugins.configs.tsserver").handlers,
+              on_attach = require("plugins.configs.tsserver").on_attach,
+              settings = require("plugins.configs.tsserver").settings,
+            },
+          })
+          return true
+        end,
+
         eslint = function()
           vim.api.nvim_create_autocmd("BufWritePre", {
             callback = function(event)
