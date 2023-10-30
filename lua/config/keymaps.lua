@@ -42,21 +42,31 @@ map("n", "<leader>Sc", "<cmd>e $MYVIMRC<cr>", { noremap = true, silent = true, d
 map("n", "<leader>Sn", "<cmd>Telescope notify<cr>", { noremap = true, silent = true, desc = "Notifications" })
 map("n", "<leader>Sh", "<cmd>checkhealth<cr>", { noremap = true, silent = true, desc = "Health" })
 
-map(
-  "n",
-  "<leader>ub",
-  '<cmd>exec &bg=="light"? "set bg=dark" : "set bg=light"<cr>',
-  { noremap = true, silent = true, desc = "Toggle Background" }
-)
+map("n", "<leader>ub", function()
+  local vscode = require("visual_studio_code")
+  local is_dark = function()
+    return vscode.get_config().mode ~= "light"
+  end
+
+  local color_mode = is_dark() and "light" or "dark"
+
+  vim.notify("Color Mode " .. color_mode)
+
+  vscode.setup({
+    mode = color_mode,
+  })
+
+  vim.cmd([[colorscheme visual_studio_code]])
+end, { noremap = true, silent = true, desc = "Toggle Background" })
 
 map("n", "gq", function()
-  return vim.lsp.buf.format {
+  return vim.lsp.buf.format({
     async = false,
     timeout_ms = 10000,
     filter = function(cli)
       return cli.name ~= "lua_ls"
     end,
-  }
+  })
 end, { buffer = 0, desc = "LSP format file" })
 
 -- map(
