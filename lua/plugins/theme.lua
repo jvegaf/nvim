@@ -4,6 +4,10 @@ return {
     lazy = false,
   },
   {
+    "navarasu/onedark.nvim",
+    lazy = false,
+  },
+  {
     "askfiy/visual_studio_code",
     priority = 100,
     config = function()
