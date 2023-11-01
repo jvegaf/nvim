@@ -1,9 +1,8 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.coding.codeium",
     "lazyvim.plugins.extras.dap.core",
-    "lazyvim.plugins.extras.editor.aerial",
-    "lazyvim.plugins.extras.editor.symbols-outline",
+    "lazyvim.plugins.extras.test.core",
+    "lazyvim.plugins.extras.coding.codeium",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.java",
     "lazyvim.plugins.extras.lang.json",
@@ -11,12 +10,13 @@
     "lazyvim.plugins.extras.lang.yaml",
     "lazyvim.plugins.extras.linting.eslint",
     "lazyvim.plugins.extras.lsp.none-ls",
-    "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.util.dot",
-    "lazyvim.plugins.extras.util.project"
+    "lazyvim.plugins.extras.util.project",
+    "lazyvim.plugins.extras.editor.aerial",
+    "lazyvim.plugins.extras.editor.symbols-outline"
   ],
   "news": {
-    "NEWS.md": "2123"
+    "NEWS.md": "2191"
   },
   "version": 2
 }
