@@ -40,6 +40,7 @@ cmp.setup({
     ["<c-space>"] = cmp.mapping.complete(),
   },
   sources = {
+    { name = "codeium", group_index = 1, priority = 100 },
     { name = "nvim_lua" },
     { name = "nvim_lsp" },
     { name = "path" },
@@ -71,8 +72,12 @@ cmp.setup({
 
   formatting = {
     format = lspkind.cmp_format({
+      mode = "symbol",
       with_text = true,
+      maxwidth = 50,
+      ellipsis_char = "...",
       menu = {
+        Codeium = "",
         buffer = "[buf]",
         npm = "  " .. "NPM",
         nvim_lsp = "[ ]",

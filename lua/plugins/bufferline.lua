@@ -1,10 +1,18 @@
 return {
   "akinsho/bufferline.nvim",
-  lazy = false,
+  event = "VeryLazy",
   opts = {
     options = {
       mode = "buffers",
       always_show_bufferline = true,
+      indicator = { style = "none" },
+      offsets = {
+        {
+          filetype = "neo-tree",
+          text = "Explorer",
+          text_align = "center",
+        },
+      },
     },
   },
   -- keys = {

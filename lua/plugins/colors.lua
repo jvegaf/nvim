@@ -1,40 +1,73 @@
+-- Set transparency
+local is_transparent = true -- Set to false to disable transparency in 🪟
+if vim.fn.has("unix") == 1 then
+  is_transparent = true
+end
+
+if is_transparent then
+  vim.opt.fillchars:append({
+    horiz = " ",
+    horizup = " ",
+    horizdown = " ",
+    vert = " ",
+    vertleft = " ",
+    vertright = " ",
+    verthoriz = " ",
+    eob = " ",
+  })
+end
+
 return {
   {
+    "EdenEast/nightfox.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      if is_transparent then
+        require("nightfox").setup({
+          options = {
+            transparent = true,
+          },
+          groups = {
+            all = {
+              NormalFloat = { fg = "fg1", bg = "NONE" },
+              WhichKeyFloat = { fg = "fg1", bg = "NONE" },
+            },
+          },
+        })
+      end
+      vim.cmd("colorscheme nordfox")
+    end,
+  },
+  {
     "folke/tokyonight.nvim",
-    opts = {
-      style = "night",
-      -- transparent = true,
-      -- styles = {
-      --   sidebars = "transparent",
-      --   floats = "transparent",
-      -- },
-    },
-    lazy = false,
-  },
-  {
-    "martinsione/darkplus.nvim",
-    lazy = false,
-  },
-  -- {
-  --   "ray-x/aurora",
-  --   lazy = false,
-  --   config = function()
-  --     vim.g.aurora_italic = true
-  --     vim.g.aurora_transparent = true
-  --     vim.g.aurora_bold = true
-  --     vim.g.aurora_darker = true
-  --     -- vim.cmd([[ colorscheme aurora ]])
-  --   end,
-  -- },
-  {
-    "Mofiqul/vscode.nvim",
-    lazy = false,
-  },
-  {
-    "sainnhe/sonokai",
+    priority = 1000,
     lazy = false,
     config = function()
-      vim.cmd [[ colorscheme tokyonight ]]
-    end
+      if is_transparent then
+        require("tokyonight").setup({
+          transparent = true,
+          styles = {
+            sidebars = "transparent",
+            floats = "transparent",
+          },
+        })
+      end
+      -- vim.cmd("colorscheme tokyonight")
+    end,
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("catppuccin").setup({
+        flavor = "mocha",
+        transparent_background = is_transparent,
+      })
+      -- vim.cmd("colorscheme catppuccin")
+    end,
   },
 }
+

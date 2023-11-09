@@ -134,4 +134,22 @@ return {
       flags = lsp_flags,
     }
   end,
+  ["dockerls"] = function()
+    return {
+      on_attach = lsp_attach,
+      flags = lsp_flags,
+    }
+  end,
+  ["docker_compose_language_service"] = function()
+    return {
+      on_attach = lsp_attach,
+      flags = lsp_flags,
+    }
+  end,
+  ["yamlls"] = function()
+    return {
+      on_attach = lsp_attach,
+      flags = lsp_flags,
+    }
+  end,
 }
