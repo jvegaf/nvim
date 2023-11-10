@@ -2,5 +2,6 @@
   "diagnostics.globals": [
     "local",
     "vim"
-  ]
+  ],
+    "workspace.checkThirdParty": "Disable"
 }
