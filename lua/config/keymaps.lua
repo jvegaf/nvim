@@ -44,6 +44,9 @@ map("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", NS)
 -- Select all
 map("n", "<C-a>", "gg<S-v>G", NS)
 
+-- Dont move cursor after yank
+map({ "n", "x" }, "y", "ygv<ESC>", NS)
+
 map("n", "vv", "V", NS)
 
 map("i", "jj", "<ESC>", NS)

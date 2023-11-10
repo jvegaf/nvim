@@ -3,27 +3,45 @@
   "contributes": {
     "snippets": [
       {
-        "language": ["cpp"],
+        "language": [
+          "cpp"
+        ],
         "path": "./cpp.json"
       },
-       {
-        "language": ["typescriptreact"],
+      {
+        "language": [
+          "java"
+        ],
+        "path": "./java.json"
+      },
+      {
+        "language": [
+          "typescriptreact"
+        ],
         "path": "./typescriptreact.json"
       },
       {
-        "language": ["typescript"],
+        "language": [
+          "typescript"
+        ],
         "path": "./typescript.json"
       },
       {
-        "language": ["javascript"],
+        "language": [
+          "javascript"
+        ],
         "path": "./javascript.json"
       },
       {
-        "language": ["json"],
+        "language": [
+          "json"
+        ],
         "path": "./jsonc.json"
       },
       {
-        "language": ["html"],
+        "language": [
+          "html"
+        ],
         "path": "./html.json"
       }
     ]
