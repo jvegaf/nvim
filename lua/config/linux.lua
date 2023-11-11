@@ -1,5 +1,3 @@
-vim.opt.clipboard = "unnamedplus" --- Copy-paste between vim and everything else
-
 local has_wsl = function()
   local output = vim.fn.systemlist("uname -r")
   return not not string.find(output[1] or "", "WSL")

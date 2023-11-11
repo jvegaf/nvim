@@ -134,6 +134,12 @@ return {
       flags = lsp_flags,
     }
   end,
+  ["kotlin_language_server"] = function()
+    return {
+      on_attach = lsp_attach,
+      flags = lsp_flags,
+    }
+  end,
   ["dockerls"] = function()
     return {
       on_attach = lsp_attach,

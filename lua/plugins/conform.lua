@@ -17,6 +17,7 @@ return {
         lua = { "stylua" },
         html = { "prettier" },
         javascript = { "prettier" },
+        kotlin = { "ktlint" },
         css = { "prettier" },
         json = { "prettier" },
         ps1 = { "powershell", "trim_whitespace", "trim_newlines" },

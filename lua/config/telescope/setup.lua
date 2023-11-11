@@ -156,6 +156,9 @@ require("telescope").setup({
     buffers = {
       initial_mode = "normal",
     },
+    colorscheme = {
+      enable_preview = true,
+    },
     fd = {
       mappings = {
         n = {

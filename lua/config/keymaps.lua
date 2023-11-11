@@ -1,13 +1,13 @@
 local map = function(modes, lhs, rhs, opts)
   local options = { silent = true }
   if opts then
-      options = vim.tbl_extend("force", options, opts)
+    options = vim.tbl_extend("force", options, opts)
   end
   if type(modes) == "string" then
-      modes = { modes }
+    modes = { modes }
   end
   for _, mode in ipairs(modes) do
-      vim.keymap.set(mode, lhs, rhs, options)
+    vim.keymap.set(mode, lhs, rhs, options)
   end
 end
 
@@ -90,14 +90,17 @@ map("n", "<leader>xs", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 map("n", "<leader>cl", ":LspInfo<cr>", { desc = "LSP Info" })
 map("n", "<leader>xc", vim.lsp.buf.code_action, { desc = "Code Action" })
 map("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename" })
-map("n", "gd", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end,
-  { desc = "Goto Definition" })
+map("n", "gd", function()
+  require("telescope.builtin").lsp_definitions({ reuse_win = true })
+end, { desc = "Goto Definition" })
 map("n", "gr", ":Telescope lsp_references<cr>", { desc = "Goto References" })
 map("n", "gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
-map("n", "gI", function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end,
-  { desc = "Goto Implementation" })
-map("n", "gy", function() require("telescope.builtin").lsp_type_definitions({ reuse_win = true }) end,
-  { desc = "Goto Type Definition" })
+map("n", "gI", function()
+  require("telescope.builtin").lsp_implementations({ reuse_win = true })
+end, { desc = "Goto Implementation" })
+map("n", "gy", function()
+  require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
+end, { desc = "Goto Type Definition" })
 map("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
 map("n", "gK", vim.lsp.buf.signature_help, { desc = "Signature Help" })
 
@@ -105,24 +108,24 @@ map("n", "gK", vim.lsp.buf.signature_help, { desc = "Signature Help" })
 map("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
 
 -- Dont move cursor after yank
-map({ "n", "x" }, "y", "ygv<ESC>", { desc = "Yank"})
+map({ "v", "x" }, "y", "ygv<ESC>", { desc = "Yank" })
 
-map("n", "vv", "V", {desc = "Visual line mode"} )
+map("n", "vv", "V", { desc = "Visual line mode" })
 
 -- map("i", "jj", "<ESC>", NS)
 -- map("i", "kk", "<ESC>", NS)
 
 -- dont yank on visual paste
-map({ "v", "x" }, "p", '"_dP', {desc = "Paste without yank"} )
+map({ "v", "x" }, "p", '"_dP', { desc = "Paste without yank" })
 
 map("n", "<A-w>", "<cmd>write<cr>", { noremap = true, silent = true, desc = "Save" })
 
 -- System
 map("n", "<leader>sd", "<cmd>Alpha<cr>", { desc = "Dashboard" })
-map("n", "<leader>sc", "<cmd>e $MYVIMRC<cr>", {  desc = "Config" })
+map("n", "<leader>sc", "<cmd>e $MYVIMRC<cr>", { desc = "Config" })
 map("n", "<leader>sn", "<cmd>Telescope notify<cr>", { desc = "Notifications" })
 map("n", "<leader>sh", "<cmd>checkhealth<cr>", { desc = "Health" })
-map("n", "<leader>sm", "<cmd>Mason<cr>", {  desc = "Mason" })
+map("n", "<leader>sm", "<cmd>Mason<cr>", { desc = "Mason" })
 
 map(
   "n",

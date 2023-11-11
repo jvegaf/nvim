@@ -1,5 +1,5 @@
 return {
   "js-debug-adapter",
-  "javadbg",
-  "javatest",
+  "java-debug-adapter",
+  "java-test",
 }

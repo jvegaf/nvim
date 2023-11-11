@@ -52,12 +52,11 @@ return {
     opts = function(_, opts)
       local lsp_attach = require("config.lsp.attach")
       -- use this function notation to build some variables
-      local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle", ".project" }
+      local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle", "build.gradle.kts", ".project" }
       local root_dir = require("jdtls.setup").find_root(root_markers)
       -- calculate workspace dir
       local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
       local workspace_dir = vim.fn.stdpath("data") .. "/site/java/workspace-root/" .. project_name
-
 
       local defaults = {
         cmd = {
@@ -165,10 +164,7 @@ return {
             require("jdtls").start_or_attach(opts)
             -- require('jdtls.dap').setup_dap_main_class_configs()
           else
-            vim.notify(
-              "jdtls: root_dir not found. Please specify a root marker",
-              vim.log.levels.ERROR
-            )
+            vim.notify("jdtls: root_dir not found. Please specify a root marker", vim.log.levels.ERROR)
           end
         end,
       })
