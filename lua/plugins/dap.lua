@@ -4,6 +4,7 @@ return {
     "theHamsta/nvim-dap-virtual-text",
     "rcarriga/nvim-dap-ui",
     "mxsdev/nvim-dap-vscode-js",
+    "mfussenegger/nvim-jdtls",
     "anuvyklack/hydra.nvim",
     "nvim-telescope/telescope-dap.nvim",
     "rcarriga/cmp-dap",

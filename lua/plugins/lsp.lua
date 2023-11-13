@@ -177,7 +177,15 @@ return {
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           -- ensure that only the jdtls client is activated
           if client.name == "jdtls" then
-            require("jdtls.dap").setup_dap_main_class_configs()
+            jdtls = require("jdtls")
+            jdtls.setup_dap({ hotcodereplace = "auto" })
+            jdtls.setup.add_commands()
+            -- Auto-detect main and setup dap config
+            require("jdtls.dap").setup_dap_main_class_configs({
+              config_overrides = {
+                vmArgs = "-Dspring.profiles.active=local",
+              },
+            })
           end
         end,
       })
