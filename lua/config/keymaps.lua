@@ -27,10 +27,10 @@ map("n", "<C-a>", "gg<S-v>G", NS)
 
 map("n", "vv", "V", NS)
 
-map("i", "jj", "<ESC>", NS)
+map("i", "jk", "<ESC>", NS)
 
 -- dont yank on visual paste
-map({ "v", "x" }, "p", '"_dP', NS)
+map("v", "p", '"_dP', NS)
 
 map("n", "<F1>", "<cmd>vertical help<cr>", { noremap = true, silent = true, desc = "Vertical Help" })
 
@@ -89,6 +89,9 @@ map(
 -- map("n", "zz", "<cmd>wq<cr>", { noremap = true, silent = true, desc = "Save Buffer and Close" })
 
 map("n", "<leader>q", "<cmd>quit<cr>", { noremap = true, silent = true, desc = "Close Window" })
+
+map("v", "<", "<gv", { noremap = true, silent = true, desc = "Stay in indent mode" })
+map("v", ">", ">gv", { noremap = true, silent = true, desc = "Stay in indent mode" })
 
 -- map("i", "<A-l>", function() return vim.fn["codeium#Accept"]() end, { expr = true })
 -- map("i", "<A-j>", function() return vim.fn["codeium#CycleCompletions"](1) end, { expr = true })
