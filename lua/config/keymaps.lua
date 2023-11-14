@@ -112,11 +112,14 @@ map({ "v", "x" }, "y", "ygv<ESC>", { desc = "Yank" })
 
 map("n", "vv", "V", { desc = "Visual line mode" })
 
--- map("i", "jj", "<ESC>", NS)
+map("i", "jk", "<ESC>", { desc = "Change to Normal Mode" })
 -- map("i", "kk", "<ESC>", NS)
 
 -- dont yank on visual paste
-map({ "v", "x" }, "p", '"_dP', { desc = "Paste without yank" })
+map("v", "p", '"_dP', { desc = "Paste without yank" })
+
+map("v", "<", "<gv", { desc = "Stay in indent mode" })
+map("v", ">", ">gv", { desc = "Stay in indent mode" })
 
 map("n", "<A-w>", "<cmd>write<cr>", { noremap = true, silent = true, desc = "Save" })
 
