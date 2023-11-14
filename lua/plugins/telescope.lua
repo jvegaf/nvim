@@ -1,17 +1,26 @@
 return {
-
-  {
-    "jvegaf/telescope-fzf-native.nvim",
-    event = "VeryLazy",
-    build = function()
-      require("telescope-fzf-native").download_library({})
-    end,
-  },
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       { "nvim-lua/plenary.nvim" },
       { "nvim-lua/popup.nvim" },
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+        dependencies = {
+          "junegunn/fzf.vim",
+          dependencies = {
+            {
+              "tpope/vim-dispatch",
+              cmd = { "Make", "Dispatch" },
+            },
+            {
+              "junegunn/fzf",
+              build = ":call fzf#install()",
+            },
+          },
+        },
+      },
       { "nvim-telescope/telescope-fzy-native.nvim" },
       { "nvim-tree/nvim-web-devicons" },
       { "nvim-telescope/telescope-file-browser.nvim" },
