@@ -1,3 +1,13 @@
+-- JAVA
+local _jdtls, jdtls = pcall(require, "config.lsp.configs.jdtls")
+if _jdtls and type(jdtls) ~= "boolean" then
+  vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = "java",
+    callback = jdtls.start,
+    desc = "Starting Java language server",
+  })
+end
+
 local lsp_attach = require("config.lsp.attach")
 
 local lsp_flags = {

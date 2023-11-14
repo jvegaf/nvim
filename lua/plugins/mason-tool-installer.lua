@@ -19,5 +19,6 @@ return {
       "yamlfmt",
       "yamllint",
     },
+    auto_update = true,
   },
 }

@@ -16,8 +16,8 @@ mason_lspconfig.setup {
 }
 
 -- filter the list for the ones not globally installed
--- require("mason-tool-installer").setup {
---   ensure_installed = vim.tbl_filter(function (tool)
---     return vim.fn.executable(tool) == 0
---   end, require "config.lsp.tools"),
--- }
+require("mason-tool-installer").setup {
+  ensure_installed = vim.tbl_filter(function(tool)
+    return vim.fn.executable(tool) == 0
+  end, require "config.lsp.tools"),
+}
