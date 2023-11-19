@@ -4,7 +4,7 @@ return {
     lazy = false,
     opts = {},
   },
-  { "folke/neodev.nvim", opts = {} },
+  { "folke/neodev.nvim",  opts = {} },
   {
     "dmmulroy/tsc.nvim",
     cmd = { "TSC" },
@@ -140,9 +140,9 @@ return {
   {
     'neovim/nvim-lspconfig',
     cmd = 'LspInfo',
-    event = {'BufReadPre', 'BufNewFile'},
+    event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
-      {'hrsh7th/cmp-nvim-lsp'},
+      { 'hrsh7th/cmp-nvim-lsp' },
     },
     config = function()
       -- This is where all the LSP shenanigans will live
@@ -153,7 +153,7 @@ return {
       lsp_zero.on_attach(function(client, bufnr)
         -- see :help lsp-zero-keybindings
         -- to learn the available actions
-        lsp_zero.default_keymaps({buffer = bufnr})
+        lsp_zero.default_keymaps({ buffer = bufnr })
       end)
 
       -- (Optional) Configure lua language server for neovim
