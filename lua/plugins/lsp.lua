@@ -119,6 +119,30 @@ return {
 
       cmp.setup({
         formatting = cmp_format,
+        sources = {
+          { name = "codeium", group_index = 1, priority = 100 },
+          { name = "nvim_lua" },
+          { name = "nvim_lsp" },
+          { name = "path" },
+          { name = "luasnip" },
+          { name = "emoji" },
+          {
+            name = "buffer",
+            keyword_length = 4,
+            option = {
+              get_bufnrs = function()
+                local bufs = {}
+                for _, win in ipairs(vim.api.nvim_list_wins()) do
+                  local bufnr = vim.api.nvim_win_get_buf(win)
+                  if vim.api.nvim_buf_get_option(bufnr, "buftype") ~= "terminal" then
+                    bufs[bufnr] = true
+                  end
+                end
+                return vim.tbl_keys(bufs)
+              end,
+            },
+          },
+        },
         mapping = cmp.mapping.preset.insert({
           -- `Enter` key to confirm completion
           ["<CR>"] = cmp.mapping.confirm({ select = false }),
