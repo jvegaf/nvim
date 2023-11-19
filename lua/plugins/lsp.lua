@@ -1,194 +1,141 @@
 return {
+  {
+    "folke/neoconf.nvim",
+    lazy = false,
+    opts = {},
+  },
   { "folke/neodev.nvim", opts = {} },
   {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      "folke/neoconf.nvim",
-      "jose-elias-alvarez/null-ls.nvim",
-      {
-        "williamboman/mason.nvim",
-        opts = {
-          ui = {
-            border = "rounded",
-          },
-        },
+    "dmmulroy/tsc.nvim",
+    cmd = { "TSC" },
+    opts = {},
+  },
+  {
+    "j-hui/fidget.nvim",
+    opts = {
+      window = {
+        blend = 0,
       },
-      "williamboman/mason-lspconfig.nvim",
-      "WhoIsSethDaniel/mason-tool-installer.nvim",
-      {
-        "b0o/SchemaStore.nvim",
-        version = false, -- last release is way too old
-      },
-      "smiteshp/nvim-navic",
-      {
-        "dmmulroy/tsc.nvim",
-        cmd = { "TSC" },
-        opts = {},
-      },
-      {
-        "j-hui/fidget.nvim",
-        enabled = false,
-        opts = {
-          window = {
-            blend = 0,
-          },
-          sources = {
-            ["null-ls"] = {
-              ignore = true,
-            },
-          },
+      sources = {
+        ["null-ls"] = {
+          ignore = true,
         },
       },
     },
-    event = "VeryLazy",
-    config = function()
-      require("config.lsp")
-    end,
   },
   {
-    "mfussenegger/nvim-jdtls",
-    -- ft = { "java" },
-    -- dependencies = { "williamboman/mason-lspconfig.nvim" },
-    -- opts = function(_, opts)
-    --   local lsp_attach = require("config.lsp.attach")
-    --   -- use this function notation to build some variables
-    --   local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle", "build.gradle.kts", ".project" }
-    --   local root_dir = require("jdtls.setup").find_root(root_markers)
-    --   -- calculate workspace dir
-    --   local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-    --   local workspace_dir = vim.fn.stdpath("data") .. "/site/java/workspace-root/" .. project_name
-    --
-    --   local defaults = {
-    --     cmd = {
-    --       "java",
-    --       "-Declipse.application=org.eclipse.jdt.ls.core.id1",
-    --       "-Dosgi.bundles.defaultStartLevel=4",
-    --       "-Declipse.product=org.eclipse.jdt.ls.core.product",
-    --       "-Dlog.protocol=true",
-    --       "-Dlog.level=ALL",
-    --       "-javaagent:" .. vim.fn.expand("$MASON/share/jdtls/lombok.jar"),
-    --       "-Xms1g",
-    --       "--add-modules=ALL-SYSTEM",
-    --       "--add-opens",
-    --       "java.base/java.util=ALL-UNNAMED",
-    --       "--add-opens",
-    --       "java.base/java.lang=ALL-UNNAMED",
-    --       "-jar",
-    --       vim.fn.expand("$MASON/share/jdtls/plugins/org.eclipse.equinox.launcher.jar"),
-    --       "-configuration",
-    --       vim.fn.expand("$MASON/share/jdtls/config"),
-    --       "-data",
-    --       workspace_dir,
-    --     },
-    --     root_dir = root_dir,
-    --     settings = {
-    --       java = {
-    --         eclipse = {
-    --           downloadSources = true,
-    --         },
-    --         configuration = {
-    --           updateBuildConfiguration = "interactive",
-    --         },
-    --         maven = {
-    --           downloadSources = true,
-    --         },
-    --
-    --         implementationsCodeLens = {
-    --           enabled = true,
-    --         },
-    --         referencesCodeLens = {
-    --           enabled = true,
-    --         },
-    --       },
-    --       signatureHelp = {
-    --
-    --         enabled = true,
-    --       },
-    --       completion = {
-    --         favoriteStaticMembers = {
-    --           "org.hamcrest.MatcherAssert.assertThat",
-    --           "org.hamcrest.Matchers.*",
-    --           "org.hamcrest.CoreMatchers.*",
-    --           "org.junit.jupiter.api.Assertions.*",
-    --           "java.util.Objects.requireNonNull",
-    --           "java.util.Objects.requireNonNullElse",
-    --           "org.mockito.Mockito.*",
-    --         },
-    --       },
-    --       sources = {
-    --         organizeImports = {
-    --           starThreshold = 9999,
-    --           staticStarThreshold = 9999,
-    --         },
-    --       },
-    --     },
-    --     init_options = {
-    --       bundles = {
-    --         vim.fn.expand("$MASON/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar"),
-    --         -- unpack remaining bundles
-    --         (table.unpack or unpack)(vim.split(vim.fn.glob("$MASON/share/java-test/*.jar"), "\n", {})),
-    --       },
-    --     },
-    --     handlers = {
-    --       ["$/progress"] = function()
-    --         -- disable progress updates.
-    --       end,
-    --     },
-    --     filetypes = { "java" },
-    --     on_attach = function(client, bufnr)
-    --       require("jdtls").setup_dap({ hotcodereplace = "auto" })
-    --       lsp_attach(client, bufnr)
-    --     end,
-    --   }
-    --
-    --   -- TODO: add overwrite for on_attach
-    --
-    --   -- ensure that table is valid
-    --   if not opts then
-    --     opts = {}
-    --   end
-    --
-    --   -- extend the current table with the defaults keeping options in the user opts
-    --   -- this allows users to pass opts through an opts table in community.lua
-    --   opts = vim.tbl_deep_extend("keep", opts, defaults)
-    --
-    --   -- send opts to config
-    --   return opts
-    -- end,
-    -- config = function(_, opts)
-    --   -- setup autocmd on filetype detect java
-    --   vim.api.nvim_create_autocmd("Filetype", {
-    --     pattern = "java", -- autocmd to start jdtls
-    --     callback = function()
-    --       if opts.root_dir and opts.root_dir ~= "" then
-    --         require("jdtls").start_or_attach(opts)
-    --         -- require('jdtls.dap').setup_dap_main_class_configs()
-    --       else
-    --         vim.notify("jdtls: root_dir not found. Please specify a root marker", vim.log.levels.ERROR)
-    --       end
-    --     end,
-    --   })
-    --   -- create autocmd to load main class configs on LspAttach.
-    --   -- This ensures that the LSP is fully attached.
-    --   -- See https://github.com/mfussenegger/nvim-jdtls#nvim-dap-configuration
-    --   vim.api.nvim_create_autocmd("LspAttach", {
-    --     pattern = "*.java",
-    --     callback = function(args)
-    --       local client = vim.lsp.get_client_by_id(args.data.client_id)
-    --       -- ensure that only the jdtls client is activated
-    --       if client.name == "jdtls" then
-    --         jdtls = require("jdtls")
-    --         jdtls.setup_dap({ hotcodereplace = "auto" })
-    --         jdtls.setup.add_commands()
-    --         -- Auto-detect main and setup dap config
-    --         require("jdtls.dap").setup_dap_main_class_configs({
-    --           config_overrides = {
-    --             vmArgs = "-Dspring.profiles.active=local",
-    --           },
-    --         })
-    --       end
-    --     end,
-    --   })
-    -- end,
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    lazy = false,
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+    },
+    cmd = { "MasonToolsInstall", "MasonToolsUpdate" },
+    opts = {
+      ensure_installed = {
+        "clang-format",
+        "eslint_d",
+        "jq",
+        "java-debug-adapter",
+        "java-test",
+        "google-java-format",
+        "ktlint",
+        "prettierd",
+        "shellcheck",
+        "shfmt",
+        "stylua",
+        "yamlfmt",
+        "yamllint",
+      },
+      auto_update = true,
+    },
+  },
+  { "smiteshp/nvim-navic" },
+  {
+    "VonHeikemen/lsp-zero.nvim",
+    branch = "v3.x",
+    lazy = false,
+    dependencies = {
+      {
+        -- LSP Support
+        { "neovim/nvim-lspconfig" },
+        { "williamboman/mason.nvim" },
+        { "williamboman/mason-lspconfig.nvim" },
+
+        -- Autocompletion
+        { "hrsh7th/nvim-cmp" },
+        { "hrsh7th/cmp-buffer" },
+        { "hrsh7th/cmp-path" },
+        { "saadparwaiz1/cmp_luasnip" },
+        { "hrsh7th/cmp-nvim-lsp" },
+        { "hrsh7th/cmp-nvim-lua" },
+
+        -- Snippets
+        { "L3MON4D3/LuaSnip" },
+        { "rafamadriz/friendly-snippets" },
+      },
+    },
+    keys = {
+      -- stylua: ignore
+      {
+        "<leader>sz",
+        function() require("luasnip.loaders").edit_snippet_files() end,
+        desc = "Edit snippets",
+      },
+    },
+    config = function()
+      local lsp_zero = require("lsp-zero")
+
+      require("mason").setup({})
+      require("mason-lspconfig").setup({
+        ensure_installed = {
+          "lua_ls",
+          "tsserver",
+          "jdtls",
+          "lemminx",
+          "dockerls",
+          "docker_compose_language_service",
+          "yamlls",
+          "jsonls",
+        },
+        handlers = {
+          lsp_zero.default_setup,
+          jdtls = lsp_zero.noop,
+          lua_ls = function()
+            local lua_opts = lsp_zero.nvim_lua_ls()
+            require("lspconfig").lua_ls.setup(lua_opts)
+          end,
+        },
+      })
+
+      lsp_zero.on_attach(function(client, bufnr)
+        -- see :help lsp-zero-keybindings
+        -- to learn the available actions
+        lsp_zero.default_keymaps({ buffer = bufnr })
+      end)
+
+      local cmp = require("cmp")
+      local cmp_format = lsp_zero.cmp_format()
+      local cmp_action = lsp_zero.cmp_action()
+
+      cmp.setup({
+        formatting = cmp_format,
+        mapping = cmp.mapping.preset.insert({
+          -- `Enter` key to confirm completion
+          ["<CR>"] = cmp.mapping.confirm({ select = false }),
+
+          -- Ctrl+Space to trigger completion menu
+          ["<C-Space>"] = cmp.mapping.complete(),
+
+          -- Navigate between snippet placeholder
+          ["<C-f>"] = cmp_action.luasnip_jump_forward(),
+          ["<C-b>"] = cmp_action.luasnip_jump_backward(),
+
+          -- Scroll up and down in the completion documentation
+          ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-d>"] = cmp.mapping.scroll_docs(4),
+        }),
+      })
+    end,
   },
 }
