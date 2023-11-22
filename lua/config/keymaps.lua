@@ -44,7 +44,7 @@ map("n", "<leader>bb", ":e #<cr>", { desc = "Switch to Other buffer" })
 map("n", "<leader>`", ":e #<cr>", { desc = "Switch to Other buffer" })
 
 -- lazy
-map("n", "<leader>l", ":Lazy<cr>", { desc = "Lazy" })
+map("n", "<leader>sl", ":Lazy<cr>", { desc = "Lazy" })
 
 -- Telescope
 map("n", "<leader>ff", ":Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
