@@ -179,7 +179,6 @@ local function jdtls_setup(event)
     'java.base/java.util=ALL-UNNAMED',
     '--add-opens',
     'java.base/java.lang=ALL-UNNAMED',
-    
     -- 💀
     '-jar',
     path.launcher_jar,
@@ -242,9 +241,9 @@ local function jdtls_setup(event)
         'org.mockito.Mockito.*',
       },
     },
-    contentProvider = {
-      preferred = 'fernflower',
-    },
+    -- contentProvider = {
+    --   preferred = 'fernflower',
+    -- },
     extendedClientCapabilities = jdtls.extendedClientCapabilities,
     sources = {
       organizeImports = {

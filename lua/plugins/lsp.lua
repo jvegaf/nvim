@@ -33,7 +33,6 @@ return {
     cmd = { "MasonToolsInstall", "MasonToolsUpdate" },
     opts = {
       ensure_installed = {
-        "clang-format",
         "eslint_d",
         "jq",
         "java-debug-adapter",
@@ -45,7 +44,6 @@ return {
         "shfmt",
         "stylua",
         "yamlfmt",
-        "yamllint",
       },
       auto_update = true,
     },
@@ -111,6 +109,11 @@ return {
         -- see :help lsp-zero-keybindings
         -- to learn the available actions
         lsp_zero.default_keymaps({ buffer = bufnr })
+        local opts = { buffer = bufnr }
+
+        vim.keymap.set({ 'n', 'x' }, 'gq', function()
+          vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
+        end, opts)
       end)
 
       local cmp = require("cmp")
@@ -120,7 +123,6 @@ return {
       cmp.setup({
         formatting = cmp_format,
         sources = {
-          { name = "codeium", group_index = 1, priority = 100 },
           { name = "nvim_lua" },
           { name = "nvim_lsp" },
           { name = "path" },

@@ -30,8 +30,8 @@ map("n", "<C-Right>", ":vertical resize +2<cr>", { desc = "Increase window width
 -- Move Lines
 map("n", "<A-j>", ":m .+1<cr>==", { desc = "Move down" })
 map("n", "<A-k>", ":m .-2<cr>==", { desc = "Move up" })
-map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
-map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+-- map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+-- map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
 map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
@@ -67,7 +67,7 @@ map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result
 map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 
 -- quit
-map("n", "<leader>q", ":qa<cr>", { desc = "Quit all" })
+map("n", "<leader>q", ":quit<cr>", { desc = "Quit" })
 
 -- windows
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })

@@ -1,8 +1,8 @@
 -- Set transparency
 local is_transparent = true -- Set to false to disable transparency in 🪟
-if vim.fn.has("unix") == 1 then
-  is_transparent = true
-end
+-- if vim.fn.has("unix") == 1 then
+--   is_transparent = true
+-- end
 
 if is_transparent then
   vim.opt.fillchars:append({
