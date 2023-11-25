@@ -1,11 +1,15 @@
-vim.opt_local.shiftwidth = 2
-vim.opt_local.tabstop = 2
-vim.opt_local.cmdheight = 2 -- more space in the neovim command line for displaying messages
+vim.opt_local.shiftwidth = 4
+vim.opt_local.tabstop = 4
+vim.opt_local.cmdheight = 4 -- more space in the neovim command line for displaying messages
 
-local status = pcall(require, "jdtls")
-if not status then
-  return
-end
+-- local status = pcall(require, "jdtls")
+-- if not status then
+--   return
+-- end
+--
+--
+
+
 
 -- Shorten function name
 local keymap = vim.keymap.set

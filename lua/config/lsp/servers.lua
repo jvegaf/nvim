@@ -133,10 +133,7 @@ return {
     }
   end,
   ["jdtls"] = function()
-    return {
-      on_attach = lsp_attach,
-      flags = lsp_flags,
-    }
+    return {}
   end,
   ["lemminx"] = function()
     return {
