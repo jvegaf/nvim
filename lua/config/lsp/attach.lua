@@ -1,10 +1,10 @@
 local telescope_mapper = require "config.telescope.mappings"
 
--- local filetype_attach = setmetatable({
---   __index = function()
---     return function() end
---   end,
--- })
+local navic = require('nvim-navic')
+navic.setup {
+  highlight = true
+}
+
 return function(client, bufnr)
   local filetype = vim.api.nvim_buf_get_option(0, "filetype")
   -- keymaps for lsp
@@ -22,7 +22,7 @@ return function(client, bufnr)
         return cli.name ~= "lua_ls"
       end,
     }
-  end, { buffer = 0, desc = "LSP format file" })
+  end, { bufnr = 0, desc = "LSP format file" })
 
   telescope_mapper("gr", "lsp_references", { buffer = true, desc = "LSP References of symbol on cursor" })
   telescope_mapper("<leader>ls", "find_symbol", { buffer = true, desc = "LSP find symbol on the project" })
@@ -34,6 +34,12 @@ return function(client, bufnr)
 
   if client.server_capabilities.inlayHintProvider then
     vim.lsp.inlay_hint(bufnr, true)
+  end
+
+  if client.server_capabilities.documentSymbolProvider then
+    vim.g.navic_silence = true
+    navic.attach(client, bufnr)
+    vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
   end
 
   -- Attach any filetype specific options to the client
