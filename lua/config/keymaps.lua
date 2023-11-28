@@ -112,7 +112,8 @@ map("v", ">", ">gv", { desc = "Stay in indent mode" })
 map("n", "<leader>w", "<cmd>write<cr>", { noremap = true, silent = true, desc = "Save" })
 
 -- quit
-map("n", "<A-q>", "<cmd>quit<cr>", { desc = "Close window" })
+map("n", "<A-q>", "<cmd>qa<cr>", { desc = "Close All" })
+map("n", "<leader>q", "<cmd>quit<cr>", { desc = "Close Window" })
 
 -- System
 map("n", "<leader>sd", "<cmd>Alpha<cr>", { desc = "Dashboard" })

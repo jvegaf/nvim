@@ -15,6 +15,7 @@ return {
       r = { name = "+Refactor" },
       f = { name = "+Find" },
       s = { name = "+System" },
+      S = { name = "+Session" },
       g = { name = "+Git" },
       l = { name = "+LSP" },
       t = { name = "+Test" },

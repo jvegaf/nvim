@@ -2,7 +2,7 @@ return {
   "goolord/alpha-nvim",
   event = "VimEnter",
   config = function()
-    local dashboard = require "alpha.themes.dashboard"
+    local dashboard = require("alpha.themes.dashboard")
     dashboard.section.header.val = require("utils.logo")["random"]
     dashboard.section.buttons.val = {
       dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
@@ -10,8 +10,16 @@ return {
       dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
       dashboard.button("w", " " .. " Find text", ":Telescope live_grep <CR>"),
       dashboard.button("s", " " .. " Open Settings", ":e $MYVIMRC <CR>"),
-      dashboard.button("d", "勒" .. " Load Current Dir Session", "<cmd>SessionManager load_current_dir_session<CR>"),
-      dashboard.button("c", " " .. " Select color theme", [[:lua require('telescope.builtin').colorscheme({enable_preview = true}) <cr>]]),
+      dashboard.button(
+        "d",
+        "勒" .. " Load last session",
+        [[<cmd>lua require("persistence").load({ last = true })<cr>]]
+      ),
+      dashboard.button(
+        "c",
+        " " .. " Select color theme",
+        [[:lua require('telescope.builtin').colorscheme({enable_preview = true}) <cr>]]
+      ),
       dashboard.button("l", "鈴" .. " Lazy", ":Lazy<CR>"),
       dashboard.button("q", " " .. " Quit", ":qa<CR>"),
     }
