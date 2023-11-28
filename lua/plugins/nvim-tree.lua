@@ -6,14 +6,13 @@ return {
   cmd = { "NvimTreeToggle", "NvimTreeFocus" },
   keys = {
     { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "NvimTree Toggle" },
-    { "<leader>o", "<cmd>NvimTreeFocus<cr>",  desc = "NvimTree Focus" },
+    -- { "<leader>o", "<cmd>NvimTreeFocus<cr>",  desc = "NvimTree Focus" },
   },
   config = function()
     local api = require("nvim-tree.api")
     api.events.subscribe(api.events.Event.FileCreated, function(file)
       vim.cmd("edit " .. file.fname)
     end)
-
 
     local function my_on_attach(bufnr)
       local function edit_or_open()
@@ -54,8 +53,8 @@ return {
 
       vim.keymap.set("n", "l", edit_or_open, opts("Edit Or Open"))
       vim.keymap.set("n", "L", vsplit_preview, opts("Vsplit Preview"))
-      vim.keymap.set("n", "h", api.tree.close, opts("Close"))
-      vim.keymap.set("n", "H", api.tree.collapse_all, opts("Collapse All"))
+      vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close Folder"))
+      vim.keymap.set("n", "H", api.node.navigate.parent, opts("Parent"))
     end
 
     require("nvim-tree").setup({
@@ -118,7 +117,6 @@ return {
       },
     })
 
-
     vim.api.nvim_create_autocmd("QuitPre", {
       callback = function()
         local invalid_win = {}
@@ -131,9 +129,11 @@ return {
         end
         if #invalid_win == #wins - 1 then
           -- Should quit, so we close all invalid windows.
-          for _, w in ipairs(invalid_win) do vim.api.nvim_win_close(w, true) end
+          for _, w in ipairs(invalid_win) do
+            vim.api.nvim_win_close(w, true)
+          end
         end
-      end
+      end,
     })
-  end
+  end,
 }

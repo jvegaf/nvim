@@ -36,11 +36,10 @@ cmp.setup({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ["<CR>"] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     ["<c-space>"] = cmp.mapping.complete(),
   },
   sources = {
-    { name = "codeium", group_index = 1, priority = 100 },
     { name = "nvim_lua" },
     { name = "nvim_lsp" },
     { name = "path" },
@@ -77,7 +76,6 @@ cmp.setup({
       maxwidth = 50,
       ellipsis_char = "...",
       menu = {
-        Codeium = "",
         buffer = "[buf]",
         npm = "  " .. "NPM",
         nvim_lsp = "[ ]",
@@ -105,7 +103,6 @@ cmp.setup({
     ghost_text = false,
   },
 })
-
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype("gitcommit", {

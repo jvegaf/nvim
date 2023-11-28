@@ -69,4 +69,15 @@ return {
       -- vim.cmd("colorscheme catppuccin")
     end,
   },
+  {
+    "justinsgithub/oh-my-monokai.nvim",
+    name = "monokai",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("oh-my-monokai").setup({
+        transparent_background = is_transparent,
+      })
+    end,
+  }
 }

@@ -25,7 +25,6 @@ return {
       { "nvim-tree/nvim-web-devicons" },
       { "nvim-telescope/telescope-file-browser.nvim" },
       { "nvim-telescope/telescope-ui-select.nvim" },
-      "jvegaf/telescope-fzf-native.nvim",
       "benfowler/telescope-luasnip.nvim",
       "debugloop/telescope-undo.nvim",
       {

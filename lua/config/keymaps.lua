@@ -30,21 +30,15 @@ map("n", "<C-Right>", ":vertical resize +2<cr>", { desc = "Increase window width
 -- Move Lines
 map("n", "<A-j>", ":m .+1<cr>==", { desc = "Move down" })
 map("n", "<A-k>", ":m .-2<cr>==", { desc = "Move up" })
-map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
-map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+-- map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+-- map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
 map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- Buffers
 map("n", "<S-h>", ":BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
 map("n", "<S-l>", ":BufferLineCycleNext<cr>", { desc = "Next buffer" })
-map("n", "[b", ":BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
-map("n", "]b", ":BufferLineCycleNext<cr>", { desc = "Next buffer" })
 map("n", "<leader>bb", ":e #<cr>", { desc = "Switch to Other buffer" })
-map("n", "<leader>`", ":e #<cr>", { desc = "Switch to Other buffer" })
-
--- lazy
-map("n", "<leader>l", ":Lazy<cr>", { desc = "Lazy" })
 
 -- Telescope
 map("n", "<leader>ff", ":Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
@@ -66,14 +60,8 @@ map("n", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result
 map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 
--- quit
-map("n", "<leader>q", ":qa<cr>", { desc = "Quit all" })
-
 -- windows
-map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
-map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
-map("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap = true })
-map("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
+map("n", "<A-w>", "<C-W>p", { desc = "Other window", remap = true })
 map("n", "<leader>.", "<C-W>s", { desc = "Split window below", remap = true })
 map("n", "<leader>/", "<C-W>v", { desc = "Split window right", remap = true })
 
@@ -121,7 +109,10 @@ map("v", "p", '"_dP', { desc = "Paste without yank" })
 map("v", "<", "<gv", { desc = "Stay in indent mode" })
 map("v", ">", ">gv", { desc = "Stay in indent mode" })
 
-map("n", "<A-w>", "<cmd>write<cr>", { noremap = true, silent = true, desc = "Save" })
+map("n", "<leader>w", "<cmd>write<cr>", { noremap = true, silent = true, desc = "Save" })
+
+-- quit
+map("n", "<A-q>", "<cmd>quit<cr>", { desc = "Close window" })
 
 -- System
 map("n", "<leader>sd", "<cmd>Alpha<cr>", { desc = "Dashboard" })
@@ -129,6 +120,7 @@ map("n", "<leader>sc", "<cmd>e $MYVIMRC<cr>", { desc = "Config" })
 map("n", "<leader>sn", "<cmd>Telescope notify<cr>", { desc = "Notifications" })
 map("n", "<leader>sh", "<cmd>checkhealth<cr>", { desc = "Health" })
 map("n", "<leader>sm", "<cmd>Mason<cr>", { desc = "Mason" })
+map("n", "<leader>sl", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 map(
   "n",

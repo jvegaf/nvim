@@ -15,12 +15,6 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets",
       { "L3MON4D3/LuaSnip", version = "v2.*" },
-      {
-        "Exafunction/codeium.nvim",
-        cmd = "Codeium",
-        build = ":Codeium Auth",
-        opts = {},
-      },
     },
     keys = {
       -- stylua: ignore

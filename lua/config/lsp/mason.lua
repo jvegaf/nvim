@@ -13,6 +13,7 @@ require('mason-lspconfig').setup({
     "kotlin_language_server",
     "lemminx",
     "lua_ls",
+    "ruff_lsp",
     "tsserver",
     "yamlls",
   }
@@ -20,6 +21,9 @@ require('mason-lspconfig').setup({
 
 require("mason-tool-installer").setup({
   ensure_installed = {
+    "black",
+    "debugpy",
+    "pyright",
     "clang-format",
     "eslint_d",
     "google-java-format",
@@ -34,5 +38,6 @@ require("mason-tool-installer").setup({
     "stylua",
     "yamlfmt",
     "yamllint",
-  }
+  },
+  auto_update = true,
 })

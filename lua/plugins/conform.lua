@@ -20,6 +20,7 @@ return {
         kotlin = { "ktlint" },
         css = { "prettier" },
         json = { "prettier" },
+        python = { "black" },
         ps1 = { "powershell", "trim_whitespace", "trim_newlines" },
         bicep = { "trim_whitespace", "trim_newlines" },
         yaml = { "yamlfmt" },

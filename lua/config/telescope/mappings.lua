@@ -49,7 +49,7 @@ map_tele("<leader>fw", "grep_word", { desc = "Grep word under cursor" })
 map_tele("<leader>gb", "branches", { desc = "Git Branches selector" })
 map_tele("<leader>gs", "git_status", { desc = "Git status" })
 map_tele("<leader>gz", "git_diffs diff_commits", { desc = "Git Diff Commits" })
-map_tele("<leader>st", "colorscheme", { desc = "Colorscheme" })
+map_tele("<leader>uc", "colorscheme", { desc = "Colorscheme" })
 map_tele("<leader>u", "undo", { desc = "Undo View" })
 map_tele("<leader>xx", "diagnostics", { desc = "Diagnostic of the buffer" })
 

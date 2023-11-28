@@ -10,9 +10,9 @@ return {
     opts = {
       panel = {
         keymap = {
-          jump_next = "<c-j>",
-          jump_prev = "<c-k>",
-          accept = "<c-l>",
+          jump_next = "<A-j>",
+          jump_prev = "<A-k>",
+          accept = "<A-l>",
           refresh = "r",
           open = "<M-CR>",
         },
@@ -25,10 +25,10 @@ return {
         enabled = true,
         auto_trigger = true,
         keymap = {
-          accept = "<c-l>",
-          next = "<c-j>",
-          prev = "<c-k>",
-          dismiss = "<c-h>",
+          accept = "<A-l>",
+          next = "<A-j>",
+          prev = "<A-k>",
+          dismiss = "<A-h>",
         },
       },
     },
