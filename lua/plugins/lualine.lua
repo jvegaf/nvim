@@ -1,126 +1,187 @@
 return {
-  "nvim-lualine/lualine.nvim",
-  event = "VeryLazy",
-  opts = function()
-    local get_hlgroup = require("utils").get_hlgroup
-    local colours = {
-      bg = get_hlgroup("Normal").bg,
-      fg = "#f8f8f2",
-      grey = "#565f89",
-      green = "#9ece6a",
-      yellow = "#e0af68",
-      blue = "#7aa2f7",
-      magenta = "#bb9af7",
-      red = "#f7768e",
-      cyan = "#7dcfff",
-      orange = "#ff9e64",
-    }
-    local copilot_colours = {
-      [""] = { fg = colours.grey, bg = colours.bg },
-      ["Normal"] = { fg = colours.grey, bg = colours.bg },
-      ["Warning"] = { fg = colours.red, bg = colours.bg },
-      ["InProgress"] = { fg = colours.yellow, bg = colours.bg },
-    }
-    return {
-      options = {
-        component_separators = { left = " ", right = " " },
-        theme = {
-          normal = {
-            a = { fg = colours.blue, bg = colours.bg },
-            b = { fg = colours.cyan, bg = colours.bg },
-            c = { fg = colours.fg, bg = colours.bg },
-            x = { fg = colours.fg, bg = colours.bg },
-            y = { fg = colours.magenta, bg = colours.bg },
-            z = { fg = colours.grey, bg = colours.bg },
-          },
-          insert = {
-            a = { fg = colours.green, bg = colours.bg },
-            z = { fg = colours.grey, bg = colours.bg },
-          },
-          visual = {
-            a = { fg = colours.magenta, bg = colours.bg },
-            z = { fg = colours.grey, bg = colours.bg },
-          },
-          terminal = {
-            a = { fg = colours.orange, bg = colours.bg },
-            z = { fg = colours.grey, bg = colours.bg },
-          },
-        },
 
-        globalstatus = true,
-        disabled_filetypes = { statusline = { "dashboard", "alpha" } },
+  -- {
+  "nvim-lualine/lualine.nvim",
+  dependencies = { { "nvim-tree/nvim-web-devicons", lazy = true } },
+  config = function()
+        -- stylua: ignore
+        -- local colors = {
+        --     blue = "#80a0ff",
+        --     cyan = "#79dac8",
+        --     black = "#080808",
+        --     white = "#c6c6c6",
+        --     red = "#ff5189",
+        --     violet = "#d183e8",
+        --     grey = "#303030"
+        -- }
+
+        local function lspClients()
+            -- local msg = "No Active Lsp"
+            local msg = ""
+            local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+            local clients = vim.lsp.get_active_clients()
+            if next(clients) == nil then
+                return msg
+            end
+            for _, client in ipairs(clients) do
+                local filetypes = client.config.filetypes
+                if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+                    return client.name
+                end
+            end
+            return msg
+        end
+
+    require("lualine").setup({
+      options = {
+        -- theme = bubbles_theme,
+        -- theme = 'tokyonight',
+        -- theme = "catppuccin",
+        theme = "auto",
+        -- component_separators = "|",
+        component_separators = { left = "", right = "" },
+        -- section_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
+        always_divide_middle = false,
+        globalstatus = false,
       },
+      -- We only have 6 sections
       sections = {
-        lualine_a = { { "mode", icon = "" } },
-        lualine_b = { { "branch", icon = "" } },
-        lualine_c = {
+        -- In each section we can add as much components
+        -- as we want
+        lualine_a = {
+          -- { "mode", separator = { left = "" }, right_padding = 2, icon = "" },
           {
-            "diagnostics",
-            symbols = {
-              error = " ",
-              warn = " ",
-              info = " ",
-              hint = "󰝶 ",
-            },
-          },
-          { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-          {
-            "filename",
-            symbols = { modified = "  ", readonly = "", unnamed = "" },
-          },
-          {
-            function()
-              return require("nvim-navic").get_location()
-            end,
-            cond = function()
-              return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
-            end,
-            color = { fg = colours.grey, bg = colours.bg },
+            "mode", --[[ separator = { left = "" }, ]]
+            right_padding = 2,
+            icon = "",
           },
         },
+        -- lualine_b = { "filename", { "branch", icon = "" }, { "diagnostics", sources = { "nvim_diagnostic" } } },
+        lualine_b = {
+          -- {
+          -- 	"filename",
+          -- 	symbols = {
+          -- 		-- modified = "[+]", -- Text to show when the file is modified.
+          -- 		-- readonly = "[-]", -- Text to show when the file is non-modifiable or readonly.
+          -- 		unnamed = "Empty Buffer", -- Text to show for unnamed buffers.
+          -- 		newfile = "New File", -- Text to show for newly created file before first write
+          -- 	},
+          -- },
+          { "branch", icon = "" },
+          -- "diff",
+          { "diagnostics", sources = { "nvim_diagnostic" } },
+        },
+        lualine_c = {
+          -- {
+          --     function()
+          --         return "%="
+          --     end,
+          -- },
+          {
+            require("noice").api.status.message.get_hl,
+            cond = require("noice").api.status.message.has,
+          },
+          {
+            require("noice").api.status.command.get,
+            cond = require("noice").api.status.command.has,
+            color = { fg = "#ff9e64" },
+          },
+          -- {
+          -- 	require("noice").api.status.mode.get,
+          -- 	cond = require("noice").api.status.mode.has,
+          -- 	color = { fg = "#ff9e64" },
+          -- },
+          {
+            require("noice").api.status.search.get,
+            cond = require("noice").api.status.search.has,
+            color = { fg = "#ff9e64" },
+          },
+        },
+        -- lualine_c = {  {gpsLocation, cond = isGpsAvailable}},
+        -- lualine_x = { { lspClients, icon = " LSP:" } },
+        -- lualine_x = { { lspClients, icon = "ﴞ" } },
+        -- lualine_y = { { lspClients, icon = "ﴞ" }, "fileformat", "filetype", "progress" },
         lualine_x = {
+          -- "mason",
           {
             require("lazy.status").updates,
             cond = require("lazy.status").has_updates,
-            color = { fg = colours.green },
-          },
-          {
-            function()
-              local icon = " "
-              local status = require("copilot.api").status.data
-              return icon .. (status.message or "")
-            end,
-            cond = function()
-              local ok, clients = pcall(vim.lsp.get_active_clients, { name = "copilot", bufnr = 0 })
-              return ok and #clients > 0
-            end,
-            color = function()
-              if not package.loaded["copilot"] then
-                return
-              end
-              local status = require("copilot.api").status.data
-              return copilot_colours[status.status] or copilot_colours[""]
-            end,
-          },
-          { "diff" },
-        },
-        lualine_y = {
-          {
-            "progress",
-          },
-          {
-            "location",
-            color = { fg = colours.cyan, bg = colours.bg },
+            color = { fg = "#ff9e64" },
           },
         },
+        -- lualine_y = { { lspClients, icon = "喇" }, "tabs", "filetype", "progress" },
+        lualine_y = { { lspClients, icon = "" }, "filetype", "progress", "searchcount" },
         lualine_z = {
-          function()
-            return "  " .. os.date("%X") .. " 📎"
-          end,
+          {
+            "location", --[[ separator = { right = "" }, ]]
+            left_padding = 2,
+          },
         },
       },
+      -- When cursor is not on active on
+      -- the pane, it shows this sections
+      -- instead on inactive panes
+      inactive_sections = {
+        lualine_a = {
+          -- {
+          "filename",
+          -- symbols = {
+          -- 	modified = "[+]", -- Text to show when the file is modified.
+          -- 	readonly = "[-]", -- Text to show when the file is non-modifiable or readonly.
+          -- 	unnamed = "[Empty Buffer]", -- Text to show for unnamed buffers.
+          -- 	newfile = "[New]", -- Text to show for newly created file before first write
+          -- },
+          -- },
+        },
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = { "location" },
+      },
+      tabline = {
+        -- lualine_a = { "buffers", { "diagnostics", sources = { "nvim_diagnostic" } } },
+        lualine_a = {
+          {
+            "buffers",
+            mode = 2,
+            hide_filename_extension = true,
+            filetype_names = {
+              TelescopePrompt = "Telescope",
+              dashboard = "Dashboard",
+              -- packer = "Packer",
+              lazy = "Lazy",
+              fzf = "FZF",
+              alpha = "Alpha",
+              unnamed = "[Empty Buffer]", -- Text to show for unnamed buffers.
+              newfile = "[New]", -- Text to show for newly created file before first write
+            }, -- Shows specific buffer name for that filetype ( { `filetype` = `buffer_name`, ... } )
+          },
+        },
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = { "tabs" },
+      },
+      extensions = {
+        "nvim-tree",
+        "neo-tree",
+        "nvim-dap-ui",
+        "symbols-outline",
+        "trouble",
+        "fugitive",
+        "quickfix",
+        "toggleterm",
+      },
+    })
 
-      extensions = { "lazy" },
-    }
+    vim.opt.laststatus = 3 -- Status bar always on bottom (shared)
   end,
+  -- init = function()
+  -- 	vim.opt.laststatus = 3 -- Status bar always on bottom (shared)
+  -- 	vim.opt.termguicolors = true
+  -- end,
+  -- },
 }
