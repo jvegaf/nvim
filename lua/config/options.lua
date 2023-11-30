@@ -106,6 +106,6 @@ vim.filetype.add({
     conf = "dosini",
   },
 })
---
--- vim.g.mapleader = ","
--- vim.g.maplocalleader = ","
+
+vim.g.mapleader = ","
+vim.g.maplocalleader = ","
