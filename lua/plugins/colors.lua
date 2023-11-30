@@ -1,8 +1,8 @@
 -- Set transparency
 local is_transparent = true -- Set to false to disable transparency in 🪟
-if vim.fn.has("unix") == 1 then
-  is_transparent = true
-end
+-- if vim.fn.has("unix") == 1 then
+--   is_transparent = true
+-- end
 
 if is_transparent then
   vim.opt.fillchars:append({
@@ -46,14 +46,14 @@ return {
     config = function()
       if is_transparent then
         require("tokyonight").setup({
-          transparent = true,
-          styles = {
-            sidebars = "transparent",
-            floats = "transparent",
-          },
+          transparent = is_transparent,
+          -- styles = {
+          --   sidebars = "transparent",
+          --   floats = "transparent",
+          -- },
         })
       end
-      vim.cmd("colorscheme tokyonight")
+      vim.cmd("colorscheme tokyonight-night")
     end,
   },
   {
@@ -61,23 +61,46 @@ return {
     name = "catppuccin",
     lazy = false,
     priority = 1000,
-    config = function()
-      require("catppuccin").setup({
-        flavor = "mocha",
-        transparent_background = is_transparent,
-      })
-      -- vim.cmd("colorscheme catppuccin")
-    end,
+    -- config = function()
+    --   require("catppuccin").setup({
+    --     flavor = "mocha",
+    --     transparent_background = is_transparent,
+    --   })
+    --   -- vim.cmd("colorscheme catppuccin")
+    -- end,
   },
   {
-    "justinsgithub/oh-my-monokai.nvim",
-    name = "monokai",
+    "polirritmico/monokai-nightasty.nvim",
     lazy = false,
     priority = 1000,
-    config = function()
-      require("oh-my-monokai").setup({
-        transparent_background = is_transparent,
-      })
-    end,
-  }
+  },
+  {
+    "Tsuzat/NeoSolarized.nvim",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    -- config = function()
+    --   require("NeoSolarized").setup({
+    --     theme = "light", -- dark or light
+    --   })
+    --   -- vim.cmd([[ colorscheme NeoSolarized ]])
+    -- end,
+  },
+  {
+    "miikanissi/modus-themes.nvim",
+    priority = 1000,
+    lazy = false,
+    -- config = function()
+    --   require("modus-themes").setup({})
+    --   -- vim.cmd("colorscheme modus")
+    -- end,
+  },
+  {
+    "oxfist/night-owl.nvim",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    -- config = function()
+    --   require("night-owl").setup({})
+    --   -- vim.cmd([[ colorscheme night-owl ]])
+    -- end,
+  },
 }

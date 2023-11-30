@@ -6,9 +6,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
-require("lazy").setup( "plugins", {
+require("lazy").setup("plugins", {
   defaults = { lazy = true },
-  install = { missing = true, colorscheme = { "tokyonight" } },
+  install = { missing = true, colorscheme = { "tokyonight-night" } },
   checker = { enabled = true },
   change_detection = {
     enabled = true,

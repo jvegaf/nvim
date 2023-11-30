@@ -9,7 +9,7 @@ return {
     "weilbith/nvim-code-action-menu",
     cmd = "CodeActionMenu",
     keys = {
-      { "<leader>xc", "<cmd>CodeActionMenu<cr>", desc = "CodeActionMenu" },
+      { "<leader>xa", "<cmd>CodeActionMenu<cr>", desc = "CodeActionMenu" },
     },
   },
 }

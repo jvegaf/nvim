@@ -30,8 +30,8 @@ map("n", "<C-Right>", ":vertical resize +2<cr>", { desc = "Increase window width
 -- Move Lines
 map("n", "<A-j>", ":m .+1<cr>==", { desc = "Move down" })
 map("n", "<A-k>", ":m .-2<cr>==", { desc = "Move up" })
--- map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
--- map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+-- map("i", "<A-j>", "<esc>:m .+1<cr>==gi", { desc = "Move down" })
+-- map("i", "<A-k>", "<esc>:m .-2<cr>==gi", { desc = "Move up" })
 map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
@@ -109,33 +109,46 @@ map("v", "p", '"_dP', { desc = "Paste without yank" })
 map("v", "<", "<gv", { desc = "Stay in indent mode" })
 map("v", ">", ">gv", { desc = "Stay in indent mode" })
 
-map("n", "<leader>w", "<cmd>write<cr>", { noremap = true, silent = true, desc = "Save" })
+map("n", "<leader>w", ":write<cr>", { noremap = true, silent = true, desc = "Save" })
 
 -- quit
-map("n", "<A-q>", "<cmd>qa<cr>", { desc = "Close All" })
-map("n", "<leader>q", "<cmd>quit<cr>", { desc = "Close Window" })
+map("n", "<A-q>", ":qa<cr>", { desc = "Close All" })
+map("n", "<leader>q", ":quit<cr>", { desc = "Close Window" })
 
 -- System
-map("n", "<leader>sd", "<cmd>Alpha<cr>", { desc = "Dashboard" })
-map("n", "<leader>sc", "<cmd>e $MYVIMRC<cr>", { desc = "Config" })
-map("n", "<leader>sn", "<cmd>Telescope notify<cr>", { desc = "Notifications" })
-map("n", "<leader>sh", "<cmd>checkhealth<cr>", { desc = "Health" })
-map("n", "<leader>sm", "<cmd>Mason<cr>", { desc = "Mason" })
-map("n", "<leader>sl", "<cmd>Lazy<cr>", { desc = "Lazy" })
+map("n", "<leader>sd", ":Alpha<cr>", { desc = "Dashboard" })
+map("n", "<leader>sc", ":e $MYVIMRC<cr>", { desc = "Config" })
+map("n", "<leader>sn", ":Telescope notify<cr>", { desc = "Notifications" })
+map("n", "<leader>sh", ":checkhealth<cr>", { desc = "Health" })
+map("n", "<leader>sm", ":Mason<cr>", { desc = "Mason" })
+map("n", "<leader>sa", ":messages<cr>", { desc = "Messages" })
+map("n", "<leader>sl", ":Lazy<cr>", { desc = "Lazy" })
 
+map("n", "<F1>", ":Helptags<cr>", { desc = "Help Tags" })
+
+-- UI
 map(
   "n",
   "<leader>ub",
-  '<cmd>exec &bg=="light"? "set bg=dark" : "set bg=light"<cr>',
+  ':exec &bg=="light"? "set bg=dark" : "set bg=light"<cr>',
   { noremap = true, silent = true, desc = "Toggle Background" }
 )
 
--- map(
---   "n",
---   "<Tab>",
---   "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal'})<cr>",
---   { noremap = true, silent = true, desc = "Buffers" }
--- )
-
-map("n", "<Tab>", "<cmd>BufferLineCycleNext<cr>", { noremap = true, silent = true, desc = "Buffers" })
-map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", { noremap = true, silent = true, desc = "Buffers" })
+-- Git
+map("n", "<leader>ghs", ":Gitsigns stage_buffer<cr>", { desc = "Stage buffer" })
+map("n", "<leader>ghu", ":Gitsigns undo_stage_buffer<cr>", { desc = "Undo stage buffer" })
+map("n", "<leader>ghr", ":Gitsigns reset_buffer<cr>", { desc = "Reset buffer" })
+map("n", "<leader>ghp", ":Gitsigns preview_hunk<cr>", { desc = "Preview hunk" })
+map("n", "<leader>ghb", ":Gitsigns blame_line<cr>", { desc = "Blame line" })
+map("n", "<leader>ghn", ":Gitsigns next_hunk<cr>", { desc = "Next hunk" })
+map("n", "<leader>ghp", ":Gitsigns prev_hunk<cr>", { desc = "Prev hunk" })
+map("n", "<leader>ghr", ":Gitsigns reset_hunk<cr>", { desc = "Reset hunk" })
+map("n", "<leader>ghs", ":Gitsigns stage_hunk<cr>", { desc = "Stage hunk" })
+map("n", "<leader>ghu", ":Gitsigns undo_stage_hunk<cr>", { desc = "Undo stage hunk" })
+map("n", "<leader>ghv", ":Gitsigns select_hunk<cr>", { desc = "Select hunk" })
+map("n", "<leader>ghl", ":Gitsigns toggle_current_line_blame<cr>", { desc = "Toggle current line blame" })
+map("n", "<leader>gd", ":DiffviewOpen<cr>", { desc = "DiffviewOpen" })
+map("n", "<leader>gD", ":DiffviewClose<cr>", { desc = "DiffviewClose" })
+map("n", "<leader>gf", ":DiffviewFileHistory %<cr>", { desc = "DiffviewFileHistory" })
+map("v", "<leader>gf", ":'<,'>DiffviewFileHistory<cr>", { desc = "Diffview Selected History" })
+map("v", "<leader>gg", ":LazyGit<cr>", { desc = "LazyGit" })
