@@ -32,7 +32,20 @@ return {
     opts = {},
 
     keys = {
-      { "<A-q>", function() require("mini.bufremove").delete(0, false) end, desc = "Close buffer" },
+      {
+        "<A-q>",
+        function()
+          require("mini.bufremove").delete(0, false)
+        end,
+        desc = "Close buffer",
+      },
     },
+  },
+  {
+    "echasnovski/mini.indentscope",
+    version = false,
+    config = function()
+      require("mini.indentscope").setup()
+    end,
   },
 }

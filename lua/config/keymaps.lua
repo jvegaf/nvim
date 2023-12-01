@@ -134,6 +134,9 @@ map(
   { noremap = true, silent = true, desc = "Toggle Background" }
 )
 
+--Find
+map("n", "<leader>fh", ":Helptags<cr>", { desc = "Find Files" })
+
 -- Git
 map("n", "<leader>ghs", ":Gitsigns stage_buffer<cr>", { desc = "Stage buffer" })
 map("n", "<leader>ghu", ":Gitsigns undo_stage_buffer<cr>", { desc = "Undo stage buffer" })
