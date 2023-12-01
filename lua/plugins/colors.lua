@@ -47,6 +47,7 @@ return {
       if is_transparent then
         require("tokyonight").setup({
           transparent = is_transparent,
+          style = "night",
           -- styles = {
           --   sidebars = "transparent",
           --   floats = "transparent",
