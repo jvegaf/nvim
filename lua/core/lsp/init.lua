@@ -17,15 +17,15 @@ local keymap = vim.keymap
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local mappingOpts = { noremap = true, silent = true }
-mappingOpts.desc = "Diagnostics float"
-keymap.set("n", "xe", vim.diagnostic.open_float, mappingOpts)
-mappingOpts.desc = "Diagnostics goto prev"
-keymap.set("n", "xo", vim.diagnostic.goto_prev, mappingOpts)
-mappingOpts.desc = "Diagnostics goto next"
-keymap.set("n", "xp", vim.diagnostic.goto_next, mappingOpts)
-mappingOpts.desc = "Diagnostics goto setloclist"
-keymap.set("n", "xq", vim.diagnostic.setloclist, mappingOpts)
+-- local mappingOpts = { noremap = true, silent = true }
+-- mappingOpts.desc = "Diagnostics float"
+-- keymap.set("n", "xe", vim.diagnostic.open_float, mappingOpts)
+-- mappingOpts.desc = "Diagnostics goto prev"
+-- keymap.set("n", "xo", vim.diagnostic.goto_prev, mappingOpts)
+-- mappingOpts.desc = "Diagnostics goto next"
+-- keymap.set("n", "xp", vim.diagnostic.goto_next, mappingOpts)
+-- mappingOpts.desc = "Diagnostics goto setloclist"
+-- keymap.set("n", "xq", vim.diagnostic.setloclist, mappingOpts)
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 -- Use LspAttach autocommand to only map the following keys
@@ -58,16 +58,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
     bufopts.desc = "Diagnostics lsp buffer implementation"
     -- keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
     keymap.set("n", "gi", builtin.lsp_implementations, bufopts)
-    bufopts.desc = "Diagnostics lsp buffer signature help"
-    keymap.set("n", "<C-s>", vim.lsp.buf.signature_help, bufopts)
-    bufopts.desc = "Diagnostics lsp buffer add workspace folder"
-    keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-    bufopts.desc = "Diagnostics lsp buffer remove workspace folder"
-    keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-    bufopts.desc = "Diagnostics lsp buffer list workspace folders"
-    keymap.set("n", "<space>wl", function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, bufopts)
+    -- bufopts.desc = "Diagnostics lsp buffer signature help"
+    -- keymap.set("n", "<C-s>", vim.lsp.buf.signature_help, bufopts)
+    -- bufopts.desc = "Diagnostics lsp buffer add workspace folder"
+    -- keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
+    -- bufopts.desc = "Diagnostics lsp buffer remove workspace folder"
+    -- keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
+    -- bufopts.desc = "Diagnostics lsp buffer list workspace folders"
+    -- keymap.set("n", "<space>wl", function()
+    --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    -- end, bufopts)
     bufopts.desc = "Diagnostics lsp buffer type definition"
     -- keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
     keymap.set("n", "<space>D", builtin.lsp_type_definitions, bufopts)
@@ -76,14 +76,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- keymap.set("n", "<space>rn", "<cmd>Lspsaga rename<CR>", bufopts)
     -- bufopts.desc = "Diagnostics lsp project rename"
     -- keymap.set("n", "<space>rp", "<cmd>Lspsaga lsp_rename ++project<CR>", bufopts)
-    bufopts.desc = "Diagnostics lsp buffer code action"
-    keymap.set("n", "xc", vim.lsp.buf.code_action, bufopts)
+    -- bufopts.desc = "Diagnostics lsp buffer code action"
+    -- keymap.set("n", "xc", vim.lsp.buf.code_action, bufopts)
     -- keymap.set("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", bufopts)
     -- keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
     bufopts.desc = "Diagnostics lsp references"
     keymap.set("n", "gr", builtin.lsp_references, bufopts)
-    bufopts.desc = "Diagnostics document symbols"
-    keymap.set("n", "<space>ls", "<cmd>Telescope lsp_document_symbols<CR>", bufopts)
+    -- bufopts.desc = "Diagnostics document symbols"
+    -- keymap.set("n", "<space>ls", "<cmd>Telescope lsp_document_symbols<CR>", bufopts)
 
     -- split definition
     bufopts.desc = "Diagnostics definition split"
@@ -120,7 +120,7 @@ local lsps_table = {
   cssls_lsp = require(providers_path .. "cssls"),
   -- latex_lsp = require(providers_path .. "latex"),
   -- dartls_lsp = require(providers_path .. "dartls"),
-  -- vue_lsp = require(providers_path .. "vue"),
+  vue_lsp = require(providers_path .. "vue"),
   eslint_lsp = require(providers_path .. "eslint"),
   angular_lsp = require(providers_path .. "angular"),
   clang_lsp = require(providers_path .. "clang"),

@@ -35,9 +35,9 @@ return {
     require("lualine").setup({
       options = {
         -- theme = bubbles_theme,
-        -- theme = 'tokyonight',
+        theme = 'tokyonight',
         -- theme = "catppuccin",
-        theme = "auto",
+        -- theme = "auto",
         -- component_separators = "|",
         component_separators = { left = "", right = "" },
         -- section_separators = { left = "", right = "" },

@@ -11,6 +11,16 @@ local map = function(modes, lhs, rhs, opts)
   end
 end
 
+local NS = { noremap = true, silent = true }
+
+
+--Remap space as leader key
+map("n", "<Space>", "", NS)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+map("n", "x", '"_x', NS)
+
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
@@ -40,14 +50,8 @@ map("n", "<S-h>", ":BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
 map("n", "<S-l>", ":BufferLineCycleNext<cr>", { desc = "Next buffer" })
 map("n", "<leader>bb", ":e #<cr>", { desc = "Switch to Other buffer" })
 
--- Telescope
-map("n", "<leader>ff", ":Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
-map("n", "<leader>fr", ":Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
-map("n", "<leader>fs", ":Telescope live_grep<cr>", { desc = "Find string in cwd" })
-map("n", "<leader>fc", ":Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
-
 --keywordprg
-map("n", "<leader>K", ":norm! K<cr>", { desc = "Keywordprg" })
+-- map("n", "<leader>K", ":norm! K<cr>", { desc = "Keywordprg" })
 
 -- Clear search with <esc>
 map("n", "<esc>", ":noh<cr><esc>", { desc = "Escape and clear hlsearch" })
@@ -74,21 +78,11 @@ map("n", "<leader><tab>d", ":tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", ":tabprevious<cr>", { desc = "Previous Tab" })
 
 -- Code/LSP
-map("n", "<leader>xs", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
-map("n", "<leader>cl", ":LspInfo<cr>", { desc = "LSP Info" })
-map("n", "<leader>xc", vim.lsp.buf.code_action, { desc = "Code Action" })
-map("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename" })
-map("n", "gd", function()
-  require("telescope.builtin").lsp_definitions({ reuse_win = true })
-end, { desc = "Goto Definition" })
+map("n", "gd", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, { desc = "Goto Definition" })
 map("n", "gr", ":Telescope lsp_references<cr>", { desc = "Goto References" })
 map("n", "gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
-map("n", "gI", function()
-  require("telescope.builtin").lsp_implementations({ reuse_win = true })
-end, { desc = "Goto Implementation" })
-map("n", "gy", function()
-  require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
-end, { desc = "Goto Type Definition" })
+map("n", "gI", function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end, { desc = "Goto Implementation" })
+map("n", "gy", function() require("telescope.builtin").lsp_type_definitions({ reuse_win = true }) end, { desc = "Goto Type Definition" })
 map("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
 map("n", "gK", vim.lsp.buf.signature_help, { desc = "Signature Help" })
 
@@ -109,49 +103,8 @@ map("v", "p", '"_dP', { desc = "Paste without yank" })
 map("v", "<", "<gv", { desc = "Stay in indent mode" })
 map("v", ">", ">gv", { desc = "Stay in indent mode" })
 
-map("n", "<leader>w", ":write<cr>", { noremap = true, silent = true, desc = "Save" })
-
 -- quit
-map("n", "<A-q>", ":qa<cr>", { desc = "Close All" })
-map("n", "<leader>q", ":quit<cr>", { desc = "Close Window" })
+map("n", "<A-q>", "<cmd>Bdelete<CR>", NS)
 
--- System
-map("n", "<leader>sd", ":Alpha<cr>", { desc = "Dashboard" })
-map("n", "<leader>sc", ":e $MYVIMRC<cr>", { desc = "Config" })
-map("n", "<leader>sn", ":Telescope notify<cr>", { desc = "Notifications" })
-map("n", "<leader>sh", ":checkhealth<cr>", { desc = "Health" })
-map("n", "<leader>sm", ":Mason<cr>", { desc = "Mason" })
-map("n", "<leader>sa", ":messages<cr>", { desc = "Messages" })
-map("n", "<leader>sl", ":Lazy<cr>", { desc = "Lazy" })
-
-map("n", "<F1>", ":Helptags<cr>", { desc = "Help Tags" })
-
--- UI
-map(
-  "n",
-  "<leader>ub",
-  ':exec &bg=="light"? "set bg=dark" : "set bg=light"<cr>',
-  { noremap = true, silent = true, desc = "Toggle Background" }
-)
-
---Find
-map("n", "<leader>fh", ":Helptags<cr>", { desc = "Find Files" })
-
--- Git
-map("n", "<leader>ghs", ":Gitsigns stage_buffer<cr>", { desc = "Stage buffer" })
-map("n", "<leader>ghu", ":Gitsigns undo_stage_buffer<cr>", { desc = "Undo stage buffer" })
-map("n", "<leader>ghr", ":Gitsigns reset_buffer<cr>", { desc = "Reset buffer" })
-map("n", "<leader>ghp", ":Gitsigns preview_hunk<cr>", { desc = "Preview hunk" })
-map("n", "<leader>ghb", ":Gitsigns blame_line<cr>", { desc = "Blame line" })
-map("n", "<leader>ghn", ":Gitsigns next_hunk<cr>", { desc = "Next hunk" })
-map("n", "<leader>ghp", ":Gitsigns prev_hunk<cr>", { desc = "Prev hunk" })
-map("n", "<leader>ghr", ":Gitsigns reset_hunk<cr>", { desc = "Reset hunk" })
-map("n", "<leader>ghs", ":Gitsigns stage_hunk<cr>", { desc = "Stage hunk" })
-map("n", "<leader>ghu", ":Gitsigns undo_stage_hunk<cr>", { desc = "Undo stage hunk" })
-map("n", "<leader>ghv", ":Gitsigns select_hunk<cr>", { desc = "Select hunk" })
-map("n", "<leader>ghl", ":Gitsigns toggle_current_line_blame<cr>", { desc = "Toggle current line blame" })
-map("n", "<leader>gd", ":DiffviewOpen<cr>", { desc = "DiffviewOpen" })
-map("n", "<leader>gD", ":DiffviewClose<cr>", { desc = "DiffviewClose" })
-map("n", "<leader>gf", ":DiffviewFileHistory %<cr>", { desc = "DiffviewFileHistory" })
-map("v", "<leader>gf", ":'<,'>DiffviewFileHistory<cr>", { desc = "Diffview Selected History" })
-map("v", "<leader>gg", ":LazyGit<cr>", { desc = "LazyGit" })
+map("n", "<A-w>", "<cmd>write<CR>", { desc = "Write", noremap = true, silent = true })
+map("n", "<leader>q", "<cmd>quit<CR>", { desc = "Close Window", noremap = true, silent = true })

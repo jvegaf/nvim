@@ -2,9 +2,23 @@ vim.opt_local.shiftwidth = 4
 vim.opt_local.tabstop = 4
 vim.opt_local.cmdheight = 4 -- more space in the neovim command line for displaying messages
 
+local status = pcall(require, "jdtls")
+if not status then
+  return
+end
+
+local home = os.getenv("HOME")
+
+local dataFolder = home .. "/.local/share/nvim"
+
 local config = {
-  cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/jdtls") },
-  -- cmd = { "~/Downloads/jdt-language-server-1.9.0-202203031534/bin/jdtls" },
+  -- cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/jdtls") },
+  cmd = {
+    "bash",
+    home .. "/.config/nvim/scripts/java-lsp.bash",
+    dataFolder,
+    "java",
+  },
   root_dir = vim.fs.dirname(vim.fs.find({ ".gradlew", ".git", "mvnw" }, { upward = true })[1]),
 }
 require("jdtls").start_or_attach(config)

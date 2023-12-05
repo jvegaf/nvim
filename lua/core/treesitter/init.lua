@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 -- local status, treesitter = pcall(require, "nvim-treesitter.configs")
 -- if not status then
 -- 	return
@@ -38,11 +39,11 @@ require("nvim-treesitter.configs").setup({
 		-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
 		-- Using this option may slow down your editor, and you may see some duplicate highlights.
 		-- Instead of true it can also be a list of languages
-		additional_vim_regex_highlighting = false,
+		-- additional_vim_regex_highlighting = false,
 	},
 	autotag = {
 		enable = true,
-		enable_close_on_slash = false,
+		-- enable_close_on_slash = false,
 	},
 	tree_docs = { enable = true, spec_config = { jsdoc = {} } },
 	-- context_commentstring = {

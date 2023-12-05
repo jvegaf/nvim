@@ -186,7 +186,6 @@ require("telescope").setup({
       use_highlighter = false,
       minimum_grep_characters = 6,
     },
-
     hop = {
       -- keys define your hop keys in order; defaults to roughly lower- and uppercased home row
       keys = { "a", "s", "d", "f", "g", "h", "j", "k", "l", ";" }, -- ... and more
@@ -223,7 +222,6 @@ require("telescope").setup({
 })
 
 require("telescope").load_extension("notify")
-require("telescope").load_extension("luasnip")
 require("telescope").load_extension("undo")
 require("telescope").load_extension("git_diffs")
 require("telescope").load_extension("file_browser")

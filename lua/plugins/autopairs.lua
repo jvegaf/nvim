@@ -1,11 +1,21 @@
 return {
-  "windwp/nvim-ts-autotag",
-  {
-    "windwp/nvim-autopairs",
-    config = function()
-      require("nvim-autopairs").setup()
-      -- If you want insert `(` after select function or method item
-      require("cmp").event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
-    end,
+  "windwp/nvim-autopairs",
+  dependencies = {
+    "hrsh7th/nvim-cmp",
   },
+  opts = {
+      check_ts = true,
+      ts_config = {
+        lua = { "string" },
+        javascript = { "template_string" },
+        java = false,
+      },
+  },
+  config = function(_, opts)
+    require("nvim-autopairs").setup(opts)
+
+    local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+    local cmp = require "cmp"
+    cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
+  end,
 }
