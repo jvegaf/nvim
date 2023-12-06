@@ -23,9 +23,21 @@ return {
     },
     config = function()
       require("mason-null-ls").setup({
-        ensure_installed = nil,
+        ensure_installed = {},
         automatic_installation = true,
       })
     end,
+  },
+
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      { "mfussenegger/nvim-jdtls" },
+    },
+
+    build = ":MasonUpdate", -- :MasonUpdate updates registry contents
+    opts = {},
   },
 }
