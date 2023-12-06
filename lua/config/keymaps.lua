@@ -61,8 +61,8 @@ end, { desc = "LSP format file" })
 --   { noremap = true, silent = true, desc = "Buffers" }
 -- )
 
--- map("n", "<Tab>", ":BufferLineCycleNext<cr>", { noremap = true, silent = true, desc = "Buffers" })
--- map("n", "<S-Tab>", ":BufferLineCyclePrev<cr>", { noremap = true, silent = true, desc = "Buffers" })
+map("n", "<Tab>", ":BufferLineCycleNext<cr>", { noremap = true, silent = true, desc = "Buffers" })
+map("n", "<S-Tab>", ":BufferLineCyclePrev<cr>", { noremap = true, silent = true, desc = "Buffers" })
 
 map(
   "n",
