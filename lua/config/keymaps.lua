@@ -14,11 +14,11 @@ end
 local NS = { noremap = true, silent = true }
 
 
---Remap space as leader key
-map("n", "<Space>", "", NS)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
+--Remap leader key
+-- map('n', ',', '', NS)
+vim.g.mapleader = ','
+vim.g.maplocalleader = ','
+--
 map("n", "x", '"_x', NS)
 
 -- better up/down

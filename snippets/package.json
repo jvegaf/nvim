@@ -75,6 +75,10 @@
       {
         "language": "typescript",
         "path": "./vue-script-router.json"
+      },
+      {
+        "language": "dart",
+        "path": "./dart.json"
       }
     ]
   }

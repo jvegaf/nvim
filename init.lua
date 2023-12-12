@@ -12,5 +12,6 @@ local is_win = vim.loop.os_uname().sysname == "Windows_NT"
 -- end
 
 if is_win then
+  vim.notify("Windows detected", "info", { title = "Neovim" })
   require("config.windows")
 end

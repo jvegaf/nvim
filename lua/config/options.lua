@@ -1,3 +1,8 @@
+
+vim.g.disable_autoformat = true
+
+vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+
 local options = {
   backup = false, -- creates a backup file
   clipboard = "unnamedplus", -- allows neovim to access the system clipboard
@@ -35,7 +40,7 @@ local options = {
   tabstop = 2, -- insert 2 spaces for a tab
   termguicolors = true, -- set term gui colors (most terminals support this)
   timeout = true,
-  timeoutlen = 300, -- time to wait for a mapped sequence to complete (in milliseconds)
+  timeoutlen = 500, -- time to wait for a mapped sequence to complete (in milliseconds)
   title = true,
   undofile = true, -- enable persistent undo
   updatetime = 300, -- faster completion (4000ms default)
@@ -43,12 +48,6 @@ local options = {
   writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
   winbar = "%=%m %f",
 }
-
--- vim.g.mapleader = ","
--- vim.g.maplocalleader = ","
-vim.g.disable_autoformat = true
-
-vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
 for k, v in pairs(options) do
   vim.opt[k] = v

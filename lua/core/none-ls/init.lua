@@ -14,6 +14,7 @@ null_ls.setup({
     -- formatting.blade_formatter,
     formatting.prettier,
     formatting.clang_format,
+    formatting.dart_format,
     -- formatting.black,
     -- TODO: Need to be tested
     diagnostics.eslint_d.with({ -- js/ts linter

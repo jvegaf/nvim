@@ -1,5 +1,6 @@
 return {
   "windwp/nvim-autopairs",
+  event = "InsertEnter",
   dependencies = {
     "hrsh7th/nvim-cmp",
   },
@@ -8,7 +9,6 @@ return {
       ts_config = {
         lua = { "string" },
         javascript = { "template_string" },
-        java = false,
       },
   },
   config = function(_, opts)
