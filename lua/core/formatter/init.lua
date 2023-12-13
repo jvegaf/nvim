@@ -19,6 +19,7 @@ conform.setup({
     markdown = { { "prettierd", "prettier" } },
     graphql = { { "prettierd", "prettier" } },
     svelte = { { "prettierd", "prettier" } },
+    dart = { { "dartfmt" } },
   },
   format_on_save = function(bufnr)
     -- Disable with a global or buffer-local variable
