@@ -48,4 +48,5 @@ return {
       require("mini.indentscope").setup()
     end,
   },
+  { "echasnovski/mini.pairs", version = false, event="VeryLazy" },
 }

@@ -1,3 +1,0 @@
-return {
-  "simaxme/java.nvim",
-}

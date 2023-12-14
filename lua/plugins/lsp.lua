@@ -51,7 +51,11 @@ return {
         "onsails/lspkind-nvim",
         "rafamadriz/friendly-snippets",
         "saadparwaiz1/cmp_luasnip",
-        { "L3MON4D3/LuaSnip", version = "v2.*" },
+        {
+          "L3MON4D3/LuaSnip",
+          version = "v2.*",
+          build = "make install_jsregexp",
+        },
         {
           "zbirenbaum/copilot-cmp",
           config = function()
@@ -81,16 +85,16 @@ return {
     "nvim-lua/plenary.nvim",
 
     -- Formatter
-    {
-      "stevearc/conform.nvim",
-      -- opts = {},
-      config = function()
-        require("core.formatter") -- formatters
-      end,
-    },
+    -- {
+    --   "stevearc/conform.nvim",
+    --   -- opts = {},
+    --   config = function()
+    --     require("core.formatter") -- formatters
+    --   end,
+    -- },
 
     -- Linters
-    { "mfussenegger/nvim-lint" },
+    -- { "mfussenegger/nvim-lint" },
 
     -- UI Tools
     -- {
@@ -149,8 +153,8 @@ return {
     require("core.lsp") -- lsp engine
     require("core.cmp") -- completion
     require("core.dap") -- debuggers management
-    require("core.formatter") -- formatters
-    require("core.linter") -- linters
+    -- require("core.formatter") -- formatters
+    -- require("core.linter") -- linters
     require("core.none-ls")
   end,
   -- },
