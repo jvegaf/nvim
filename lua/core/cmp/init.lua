@@ -36,32 +36,32 @@ cmp.setup({
     documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({
-    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-s>"] = cmp.mapping.complete(),
+    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-u>"] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.abort(),
     ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    ["<Tab>"] = cmp.mapping(function(fallback)
+    ["<Down>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      -- elseif luasnip.expand_or_jumpable() then
-      -- 	-- elseif luasnip.expand_or_locally_jumpable() then
-      -- 	luasnip.expand_or_jump()
+      elseif luasnip.expand_or_jumpable() then
+      	-- elseif luasnip.expand_or_locally_jumpable() then
+      	luasnip.expand_or_jump()
       elseif has_words_before() then
         cmp.complete()
       else
         fallback()
       end
     end, { "i", "s" }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
+    ["<Up>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      -- elseif luasnip.jumpable(-1) then
-      -- 	luasnip.jump(-1)
+      elseif luasnip.jumpable(-1) then
+      	luasnip.jump(-1)
       else
         fallback()
       end
-    end, { "i", "s" }),
+    end, { "i", "s", "c" }),
   }),
   sources = cmp.config.sources({
     { name = "copilot" },

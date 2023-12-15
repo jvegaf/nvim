@@ -94,7 +94,7 @@ return {
     -- },
 
     -- Linters
-    -- { "mfussenegger/nvim-lint" },
+    { "mfussenegger/nvim-lint" },
 
     -- UI Tools
     -- {
@@ -154,7 +154,7 @@ return {
     require("core.cmp") -- completion
     require("core.dap") -- debuggers management
     -- require("core.formatter") -- formatters
-    -- require("core.linter") -- linters
+    require("core.linter") -- linters
     require("core.none-ls")
   end,
   -- },

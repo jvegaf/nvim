@@ -46,6 +46,13 @@ autocmd("LspAttach", {
         vim.diagnostic.open_float(nil, opts)
       end,
     })
+
+    vim.keymap.set("n", "gq", function()
+      vim.lsp.buf.format {
+        async = false,
+        filter = function(attachedClient) return attachedClient.name == "null-ls" end,
+      }
+    end, { buffer = buffer, noremap = true, silent = true, desc = "Format buffer" })
   end,
 })
 
