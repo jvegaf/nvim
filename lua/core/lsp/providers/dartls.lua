@@ -1,7 +1,7 @@
--- local status, flutter_tools = pcall(require, "flutter-tools")
--- if not status then
--- 	return
--- end
+local status, flutter_tools = pcall(require, "flutter-tools")
+if not status then
+	return
+end
 
 local M = {}
 
@@ -16,6 +16,9 @@ function M.load(args)
 			-- on_attach = args.on_attach,
 			capabilities = args.capabilities,
 			flags = args.flags,
+      settings = {
+        renameFilesWithClasses = "always"
+      }
 		},
 	}) -- use defaults
 end

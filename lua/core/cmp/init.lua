@@ -64,7 +64,7 @@ cmp.setup({
     end, { "i", "s", "c" }),
   }),
   sources = cmp.config.sources({
-    { name = "copilot" },
+    { name = "copilot", group_index = 1, priority = 100 },
     { name = "nvim_lsp" },
     { name = "luasnip" }, -- For luasnip users.
     { name = "nvim_lsp_signature_help" },
