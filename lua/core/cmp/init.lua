@@ -64,14 +64,14 @@ cmp.setup({
     end, { "i", "s", "c" }),
   }),
   sources = cmp.config.sources({
-    { name = "copilot", group_index = 1, priority = 100 },
-    { name = "nvim_lsp" },
-    { name = "luasnip" }, -- For luasnip users.
-    { name = "nvim_lsp_signature_help" },
-    { name = "nvim_lua" },
-    { name = "path" },
-    { name = "emoji" },
-    { name = "calc" },
+    { name = "copilot",                 group_index = 2 },
+    { name = "nvim_lsp",                group_index = 2 },
+    { name = "luasnip",                 group_index = 2 }, -- For luasnip users.
+    { name = "nvim_lsp_signature_help", group_index = 2 },
+    { name = "nvim_lua",                group_index = 2 },
+    { name = "path",                    group_index = 2 },
+    { name = "emoji",                   group_index = 2 },
+    { name = "calc",                    group_index = 2 },
     -- { name = "buffer" },
   }, {
     {
@@ -89,8 +89,9 @@ cmp.setup({
   }),
   formatting = {
     format = lspkind.cmp_format({
-      mode = "symbol_text",
+      mode = "symbol_map",
       menu = {
+        copilot = "",
         lua_ls = "[Lua]",
         buffer = "[Buffer]",
         nvim_lsp = "[LSP]",

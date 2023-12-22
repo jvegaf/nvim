@@ -46,8 +46,8 @@ map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- Buffers
-map("n", "<S-h>", ":BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
-map("n", "<S-l>", ":BufferLineCycleNext<cr>", { desc = "Next buffer" })
+map("n", "<S-Tab>", ":BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
+map("n", "<Tab>", ":BufferLineCycleNext<cr>", { desc = "Next buffer" })
 map("n", "<leader>bb", ":e #<cr>", { desc = "Switch to Other buffer" })
 
 --keywordprg
@@ -104,7 +104,7 @@ map("v", "<", "<gv", { desc = "Stay in indent mode" })
 map("v", ">", ">gv", { desc = "Stay in indent mode" })
 
 -- quit
-map("n", "<A-q>", "<cmd>Bdelete<CR>", NS)
+map("n", "Q", "<cmd>quit<CR>", NS)
 
-map("n", "<A-w>", "<cmd>write<CR>", { desc = "Write", noremap = true, silent = true })
-map("n", "<leader>q", "<cmd>quit<CR>", { desc = "Close Window", noremap = true, silent = true })
+map("n", "<leader>w", "<cmd>write<CR>", { desc = "Write", noremap = true, silent = true })
+map("n", "<leader>q", "<cmd>Bdelete<CR>", { desc = "Close buffer", noremap = true, silent = true })
