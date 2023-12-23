@@ -32,7 +32,7 @@ map("i", "jk", "<ESC>", NS)
 -- dont yank on visual paste
 map("v", "p", '"_dP', NS)
 
-map("n", "<A-w>", ":write<cr>", { noremap = true, silent = true, desc = "Save" })
+map("n", "W", ":write<cr>", { noremap = true, silent = true, desc = "Save" })
 
 -- System
 map("n", "<leader>Sd", ":Alpha<cr>", { noremap = true, silent = true, desc = "Dashboard" })
@@ -66,7 +66,7 @@ map("n", "<S-Tab>", ":BufferLineCyclePrev<cr>", { noremap = true, silent = true,
 
 map(
   "n",
-  "<A-q>",
+  "Q",
   ":lua require('mini.bufremove').delete(0, false)<cr>",
   { noremap = true, silent = true, desc = "Close buffer" }
 )
