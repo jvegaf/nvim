@@ -104,7 +104,7 @@ map("v", "<", "<gv", { desc = "Stay in indent mode" })
 map("v", ">", ">gv", { desc = "Stay in indent mode" })
 
 -- quit
-map("n", "Q", "<cmd>quit<CR>", NS)
+map("n", "<leader>q", "<cmd>quit<CR>", NS)
 
-map("n", "<leader>w", "<cmd>write<CR>", { desc = "Write", noremap = true, silent = true })
-map("n", "<leader>q", "<cmd>Bdelete<CR>", { desc = "Close buffer", noremap = true, silent = true })
+map("n", "W", "<cmd>write<CR>", { desc = "Write", noremap = true, silent = true })
+map("n", "Q", "<cmd>Bdelete<CR>", { desc = "Close buffer", noremap = true, silent = true })
