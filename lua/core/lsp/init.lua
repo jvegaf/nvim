@@ -127,6 +127,7 @@ local lsps_table = {
   -- php_lsp = require(providers_path .. "php"),
   tailwind_lsp = require(providers_path .. "tailwind"),
   emmet_lsp = require(providers_path .. "emmet"),
+  rust_lsp = require(providers_path .. "rust"),
   -- go_lsp = require(providers_path .. "go"),
 }
 
