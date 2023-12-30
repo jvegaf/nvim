@@ -10,6 +10,18 @@
       },
       {
         "language": [
+          "rust"
+        ],
+        "path": "./rust.json"
+      },
+      {
+        "language": [
+          "sh"
+        ],
+        "path": "./sh.json"
+      },
+      {
+        "language": [
           "java"
         ],
         "path": "./java.json"
