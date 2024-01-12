@@ -67,7 +67,7 @@ cmp.setup({
     { name = "copilot",                 group_index = 2 },
     { name = "nvim_lsp",                group_index = 2 },
     { name = "luasnip",                 group_index = 2 }, -- For luasnip users.
-    { name = "crates",                 group_index = 2 }, -- For luasnip users.
+    { name = "crates",                  group_index = 2 }, -- For luasnip users.
     { name = "nvim_lsp_signature_help", group_index = 2 },
     { name = "nvim_lua",                group_index = 2 },
     { name = "path",                    group_index = 2 },

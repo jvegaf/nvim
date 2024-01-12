@@ -7,7 +7,8 @@ return {
     -- Mason
     "williamboman/mason-lspconfig.nvim",
     "jay-babu/mason-null-ls.nvim",
-    "jayp0521/mason-nvim-dap.nvim",
+    -- "jayp0521/mason-nvim-dap.nvim",
+    "jay-babu/mason-nvim-dap.nvim",
 
     -- LSP
     -- { "jose-elias-alvarez/typescript.nvim" },

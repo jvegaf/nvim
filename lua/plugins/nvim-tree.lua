@@ -53,9 +53,12 @@ return {
       api.config.mappings.default_on_attach(bufnr)
 
       vim.keymap.set("n", "l", edit_or_open, opts("Edit Or Open"))
+      vim.keymap.set("n", "<Right>", edit_or_open, opts("Edit Or Open"))
       vim.keymap.set("n", "L", vsplit_preview, opts("Vsplit Preview"))
       vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close Folder"))
       vim.keymap.set("n", "H", api.node.navigate.parent, opts("Parent"))
+      vim.keymap.set("n", "<Left>", api.node.navigate.parent_close, opts("Close Folder"))
+      vim.keymap.set("n", "<S-Left>", api.node.navigate.parent, opts("Parent"))
     end
 
     require("nvim-tree").setup({
@@ -104,6 +107,7 @@ return {
       view = {
         relativenumber = true,
         width = 40,
+        cursorline = true,
       },
       trash = {
         cmd = "trash",
