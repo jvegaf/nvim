@@ -20,6 +20,7 @@ conform.setup({
     graphql = { { "prettierd", "prettier" } },
     svelte = { { "prettierd", "prettier" } },
     dart = { { "dartfmt" } },
+    xml = { { "xmlformatter" } },
   },
   format_on_save = function(bufnr)
     -- Disable with a global or buffer-local variable
