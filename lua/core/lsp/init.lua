@@ -129,6 +129,7 @@ local lsps_table = {
   emmet_lsp = require(providers_path .. "emmet"),
   rust_lsp = require(providers_path .. "rust"),
   lemminx = require(providers_path .. "xml"),
+  slint_lsp = require(providers_path .. "slint"),
   -- go_lsp = require(providers_path .. "go"),
 }
 

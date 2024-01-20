@@ -6,6 +6,7 @@ require("mason-lspconfig").setup({
     "lua_ls",
     "rust_analyzer",
     "lemminx",
+    "slint_lsp"
   },
   -- ensure_installed = { "lua_ls", "tsserver", "jdtls", "angularls", "bashls" },
   automatic_installation = true,

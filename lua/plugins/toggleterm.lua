@@ -3,9 +3,9 @@ return {
   lazy = false,
   branch = "main",
   keys = {
-    { "<leader>1", "<Cmd>1ToggleTerm direction=vertical size=80<Cr>", desc = "Terminal #1", mode = { "t", "n" } },
-    { "<leader>2", "<Cmd>2ToggleTerm<Cr>", desc = "Terminal #2", mode = { "t", "n" } },
-    { "<leader>3", "<Cmd>3ToggleTerm direction=horizontal<Cr>", desc = "Terminal #3", mode = { "t", "n" } },
+    { "<A-1>", "<Cmd>1ToggleTerm direction=vertical size=80<Cr>", desc = "Terminal #1", mode = { "t", "n" } },
+    { "<A-2>", "<Cmd>2ToggleTerm<Cr>", desc = "Terminal #2", mode = { "t", "n" } },
+    { "<A-3>", "<Cmd>3ToggleTerm direction=horizontal<Cr>", desc = "Terminal #3", mode = { "t", "n" } },
   },
   config = function()
     local is_win = vim.loop.os_uname().sysname == "Windows_NT"
