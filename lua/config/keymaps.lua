@@ -121,7 +121,8 @@ map("v", "p", '"_dP', { desc = "Paste without yank" })
 map("v", "<", "<gv", { desc = "Stay in indent mode" })
 map("v", ">", ">gv", { desc = "Stay in indent mode" })
 
-map("n", "<A-w>", "<cmd>write<cr>", { noremap = true, silent = true, desc = "Save" })
+map("n", "W", "<cmd>write<cr>", { noremap = true, silent = true, desc = "Save" })
+map("n", "Q", "<cmd>bdelete<cr>", { noremap = true, silent = true, desc = "Save" })
 
 -- System
 map("n", "<leader>sd", "<cmd>Alpha<cr>", { desc = "Dashboard" })

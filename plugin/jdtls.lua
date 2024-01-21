@@ -86,14 +86,14 @@ local function get_jdtls_paths()
     -- https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
     --
     -- This example assume you are using sdkman: https://sdkman.io
-    -- {
-    --   name = 'JavaSE-17',
-    --   path = vim.fn.expand('~/.sdkman/candidates/java/17.0.6-tem'),
-    -- },
-    -- {
-    --   name = 'JavaSE-18',
-    --   path = vim.fn.expand('~/.sdkman/candidates/java/18.0.2-amzn'),
-    -- },
+    {
+      name = 'JavaSE-11',
+      path = vim.fn.expand('~/.sdkman/candidates/java/11.0.22-tem'),
+    },
+    {
+      name = 'JavaSE-17',
+      path = vim.fn.expand('~/.sdkman/candidates/java/17.0.9-tem'),
+    },
   }
 
   cache_vars.paths = path
@@ -134,7 +134,7 @@ local function jdtls_on_attach(client, bufnr)
 
   -- The following mappings are based on the suggested usage of nvim-jdtls
   -- https://github.com/mfussenegger/nvim-jdtls#usage
-  
+
   local opts = {buffer = bufnr}
   vim.keymap.set('n', '<A-o>', "<cmd>lua require('jdtls').organize_imports()<cr>", opts)
   vim.keymap.set('n', 'crv', "<cmd>lua require('jdtls').extract_variable()<cr>", opts)
