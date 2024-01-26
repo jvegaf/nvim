@@ -2,15 +2,19 @@ require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = {
     "tsserver",
+    "arduino_language_server",
     "jdtls",
+    "clangd",
     "lua_ls",
     "rust_analyzer",
     "lemminx",
-    "slint_lsp"
+    "slint_lsp",
+    "bashls",
   },
   -- ensure_installed = { "lua_ls", "tsserver", "jdtls", "angularls", "bashls" },
   automatic_installation = true,
 })
+
 -- Now we're using dap_vscode_js and to manage js
 require("mason-nvim-dap").setup({
 	automatic_installation = true,

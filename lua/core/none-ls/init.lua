@@ -56,7 +56,13 @@ null_ls.setup({
 })
 
 mason_null_ls.setup({
-  ensure_installed = { "stylua", "eslint_d", "prettierd", "prettier" },
-  -- ensure_installed = { "stylua", "prettier" },
+  ensure_installed = {
+    "stylua",
+    "clang_format",
+    "dart_format",
+    "eslint_d",
+    "prettierd",
+    "prettier",
+  },
   automatic_installation = true,
 })
