@@ -123,6 +123,7 @@ local lsps_table = {
   vue_lsp = require(providers_path .. "vue"),
   eslint_lsp = require(providers_path .. "eslint"),
   angular_lsp = require(providers_path .. "angular"),
+  arduino_lsp = require(providers_path .. "arduino"),
   clang_lsp = require(providers_path .. "clang"),
   -- php_lsp = require(providers_path .. "php"),
   tailwind_lsp = require(providers_path .. "tailwind"),
