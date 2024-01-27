@@ -8,6 +8,7 @@ require("mason-lspconfig").setup({
     "lua_ls",
     "rust_analyzer",
     "lemminx",
+    "eslint",
     "slint_lsp",
     "bashls",
   },

@@ -19,7 +19,7 @@ null_ls.setup({
     -- TODO: Need to be tested
     diagnostics.eslint_d.with({ -- js/ts linter
       condition = function(utils)
-        return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
+        return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json", ".eslintrc" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
       end,
     }),
   },
