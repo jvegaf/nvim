@@ -1,8 +1,6 @@
 local null_ls = require("null-ls")
 local mason_null_ls = require("mason-null-ls")
--- local utils = require("core.lsp.utils.format_util")
 
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
@@ -15,7 +13,8 @@ null_ls.setup({
     formatting.prettier,
     formatting.clang_format,
     formatting.dart_format,
-    -- formatting.black,
+    formatting.black,
+    formatting.isort,
     -- TODO: Need to be tested
     diagnostics.eslint_d.with({ -- js/ts linter
       condition = function(utils)
@@ -63,6 +62,8 @@ mason_null_ls.setup({
     "eslint_d",
     "prettierd",
     "prettier",
+    "black",
+    "isort",
   },
   automatic_installation = true,
 })

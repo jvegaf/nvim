@@ -19,7 +19,7 @@ return {
         },
       },
     },
-    { "simrat39/rust-tools.nvim", dependencies =  { "nvim-lua/plenary.nvim" } },
+    { "simrat39/rust-tools.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
     { "lervag/vimtex" },
     { "akinsho/flutter-tools.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
     { "mfussenegger/nvim-jdtls" },
@@ -27,6 +27,7 @@ return {
     {
       "zbirenbaum/copilot.lua",
       cmd = "Copilot",
+      enabled = false,
       build = ":Copilot auth",
       opts = {
         suggestion = { enabled = false },
@@ -59,6 +60,7 @@ return {
         },
         {
           "zbirenbaum/copilot-cmp",
+          enabled = false,
           config = function()
             require("copilot_cmp").setup({
               event = { "InsertEnter", "LspAttach" },
@@ -83,6 +85,7 @@ return {
       "mfussenegger/nvim-dap",
       event = { "BufReadPre", "BufNewFile" },
       dependencies = {
+        "mfussenegger/nvim-dap-python",
         "rcarriga/nvim-dap-ui",
         "theHamsta/nvim-dap-virtual-text",
         "mxsdev/nvim-dap-vscode-js",

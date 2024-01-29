@@ -64,7 +64,7 @@ cmp.setup({
     end, { "i", "s", "c" }),
   }),
   sources = cmp.config.sources({
-    { name = "copilot",                 group_index = 2 },
+    -- { name = "copilot",                 group_index = 2 },
     { name = "nvim_lsp",                group_index = 2 },
     { name = "luasnip",                 group_index = 2 }, -- For luasnip users.
     { name = "crates",                  group_index = 2 }, -- For luasnip users.
@@ -92,7 +92,7 @@ cmp.setup({
     format = lspkind.cmp_format({
       mode = "symbol_map",
       menu = {
-        copilot = "",
+        -- copilot = "",
         lua_ls = "[Lua]",
         buffer = "[Buffer]",
         crates = "[Crates]",
@@ -107,7 +107,7 @@ cmp.setup({
   sorting = {
     priority_weight = 2,
     comparators = {
-      require("copilot_cmp.comparators").prioritize,
+      -- require("copilot_cmp.comparators").prioritize,
 
       -- Below is the default comparitor list and order for nvim-cmp
       cmp.config.compare.offset,

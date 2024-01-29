@@ -11,6 +11,7 @@ require("mason-lspconfig").setup({
     "eslint",
     "slint_lsp",
     "bashls",
+    "pyright",
   },
   -- ensure_installed = { "lua_ls", "tsserver", "jdtls", "angularls", "bashls" },
   automatic_installation = true,
@@ -26,6 +27,7 @@ require("mason-nvim-dap").setup({
     "dart-debug-adapter",
     "java-debug-adapter",
     "java-test",
+    "python",
   },
 	-- automatic_setup = true,
 	handlers = {
