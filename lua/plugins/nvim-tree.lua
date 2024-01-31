@@ -91,6 +91,8 @@ return {
         },
       },
       -- update the focused file on BufEnter, un-collapses the folders recursively until it finds the file
+      sync_root_with_cwd = true,
+      respect_buf_cwd = true,
       update_focused_file = {
         enable = true,
         update_root = true,

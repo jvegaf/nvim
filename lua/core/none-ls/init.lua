@@ -1,7 +1,6 @@
 local null_ls = require("null-ls")
 local mason_null_ls = require("mason-null-ls")
 
-
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 
@@ -15,6 +14,12 @@ null_ls.setup({
     formatting.dart_format,
     formatting.black,
     formatting.isort,
+    diagnostics.mypy.with({
+      extra_args = function()
+        local virtual = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX") or "/usr"
+        return { "--python-executable", virtual .. "/bin/python3" }
+      end,
+    }),
     -- TODO: Need to be tested
     diagnostics.eslint_d.with({ -- js/ts linter
       condition = function(utils)
@@ -64,6 +69,7 @@ mason_null_ls.setup({
     "prettier",
     "black",
     "isort",
+    "mypy",
   },
   automatic_installation = true,
 })

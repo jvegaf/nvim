@@ -25,6 +25,7 @@ require("nvim-treesitter.configs").setup({
     "tsx",
     "typescript",
     "vim",
+    "vimdoc",
     "xml",
   },
 	-- Install parsers synchronously (only applied to `ensure_installed`)

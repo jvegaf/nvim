@@ -115,7 +115,7 @@ local capabilities = cmp_nvim_lsp.default_capabilities()
 local providers_path = "core.lsp.providers."
 local lsps_table = {
   lua_lsp = require(providers_path .. "lua"),
-  -- tsserver_lsp = require(providers_path .. "tsserver"),
+  tsserver_lsp = require(providers_path .. "tsserver"),
   json_lsp = require(providers_path .. "json"),
   cssls_lsp = require(providers_path .. "cssls"),
   -- latex_lsp = require(providers_path .. "latex"),
@@ -131,15 +131,16 @@ local lsps_table = {
   rust_lsp = require(providers_path .. "rust"),
   lemminx = require(providers_path .. "xml"),
   slint_lsp = require(providers_path .. "slint"),
+  python_lsp = require(providers_path .. "python"),
   -- go_lsp = require(providers_path .. "go"),
 }
 
 for key, _ in next, lsps_table, nil do
   lsps_table[key].load({
     capabilities = capabilities,
-    -- on_attach = on_attach,
+    on_attach = on_attach,
     flags = lsp_flags,
-    -- handlers = handlers,
+    handlers = handlers,
   })
 end
 

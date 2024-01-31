@@ -11,7 +11,7 @@ require("mason-lspconfig").setup({
     "eslint",
     "slint_lsp",
     "bashls",
-    "pyright",
+    "jedi_language_server",
   },
   -- ensure_installed = { "lua_ls", "tsserver", "jdtls", "angularls", "bashls" },
   automatic_installation = true,
