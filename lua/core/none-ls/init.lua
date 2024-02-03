@@ -69,7 +69,9 @@ mason_null_ls.setup({
     "prettier",
     "black",
     "isort",
+    "pylint",
     "mypy",
+    "ktlint",
   },
   automatic_installation = true,
 })

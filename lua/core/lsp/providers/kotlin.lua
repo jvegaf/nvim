@@ -6,7 +6,7 @@
 local M = {}
 
 function M.load(args)
-	require("lspconfig").jsonls.setup({
+	require("lspconfig").kotlin_language_server.setup({
 		capabilities = args.capabilities,
     on_attach = args.on_attach,
     flags = args.flags,
