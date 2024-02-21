@@ -3,6 +3,7 @@ return {
   opts = {
     defaults = {
       ["<leader>r"] = { name = "+Refactor" },
+      ["<leader>i"] = { name = "+AnyJump" },
       ["<leader>S"] = { name = "+System" },
       ["<leader>g"] = {
         -- require install gitui   https://github.com/extrawurst/gitui

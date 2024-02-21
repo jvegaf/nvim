@@ -35,7 +35,7 @@ return {
     --   require("NeoSolarized").setup({
     --     theme = "light", -- dark or light
     --   })
-    --   -- vim.cmd([[ colorscheme NeoSolarized ]])
+    --   -- vim.cmd([[ colorscheme NeoSolarized ]])W
     -- end,
   },
   {
@@ -55,5 +55,10 @@ return {
     --   require("night-owl").setup({})
     --   -- vim.cmd([[ colorscheme night-owl ]])
     -- end,
+  },
+  {
+    "christianchiarulli/nvcode-color-schemes.vim",
+    lazy = false,
+    priority = 1000,
   },
 }

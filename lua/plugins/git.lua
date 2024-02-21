@@ -1,5 +1,17 @@
 return {
   {
+    "dinhhuy258/git.nvim",
+    event = "BufReadPre",
+    opts = {
+      keymaps = {
+        -- Open blame window
+        blame = "<Leader>gwb",
+        -- Open file/folder in git repository
+        browse = "<Leader>go",
+      },
+    },
+  },
+  {
     "lewis6991/gitsigns.nvim",
     event = "BufReadPre",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -78,6 +90,31 @@ return {
     end,
     keys = {
       { "<leader>gz", "<cmd>Telescope git_diffs  diff_commits<CR>", desc = "Telescope diff_commits" },
+    },
+  },
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "sindrets/diffview.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    cmd = "Neogit",
+    keys = {
+      { "<Leader>gm", "<cmd>Neogit<CR>", desc = "Neogit" },
+    },
+    -- See: https://github.com/TimUntersberger/neogit#configuration
+    opts = {
+      disable_signs = false,
+      disable_context_highlighting = false,
+      disable_commit_confirmation = false,
+      signs = {
+        section = { ">", "v" },
+        item = { ">", "v" },
+        hunk = { "", "" },
+      },
+      integrations = {
+        diffview = true,
+      },
     },
   },
 }
