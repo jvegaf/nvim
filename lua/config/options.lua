@@ -107,5 +107,11 @@ vim.filetype.add({
   },
 })
 
+vim.filetype.add({
+  extension = {
+    fxml = "xml",
+  },
+})
+
 vim.g.mapleader = ","
 -- vim.g.maplocalleader = ","

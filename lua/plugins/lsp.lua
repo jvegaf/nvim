@@ -9,6 +9,7 @@ return {
         "java-test",
         "java-debug-adapter",
         "java-language-server",
+        "kotlin-debug-adapter",
       },
     },
   },
@@ -18,6 +19,8 @@ return {
       ensure_installed = {
         "cssls",
         "cssmodules-language-server",
+        "kotlin-language-server",
+        "lemminx",
       },
     },
   },
@@ -33,6 +36,8 @@ return {
           }),
           builtins.diagnostics.stylelint,
           builtins.formatting.stylua,
+          builtins.diagnostics.ktlint,
+          builtins.formatting.ktlint,
         },
       })
     end,
@@ -48,6 +53,7 @@ return {
       require("mason-null-ls").setup({
         ensure_installed = {
           "stylelint",
+          "ktlint",
         },
         -- automatic_installation = true,
       })
