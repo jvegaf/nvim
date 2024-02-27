@@ -59,6 +59,17 @@ return {
       })
     end,
   },
+  {
+    "jay-babu/mason-nvim-dap.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "williamboman/mason.nvim",
+      "mfussenegger/nvim-dap",
+    },
+    opts = {
+      ensure_installed = { "javadbg", "javatest", "kotlin" },
+    },
+  },
 
   {
     "neovim/nvim-lspconfig",
