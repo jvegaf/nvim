@@ -6,6 +6,7 @@ require("mason-lspconfig").setup({
     "jdtls",
     "jsonls",
     "clangd",
+    "kotlin_language_server",
     "lua_ls",
     "rust_analyzer",
     "lemminx",

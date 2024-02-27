@@ -19,6 +19,7 @@ conform.setup({
     markdown = { { "prettierd", "prettier" } },
     graphql = { { "prettierd", "prettier" } },
     svelte = { { "prettierd", "prettier" } },
+    kotlin = {  "ktlint" } ,
     dart = { { "dartfmt" } },
     xml = { { "xmlformatter" } },
   },
