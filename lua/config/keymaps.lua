@@ -50,9 +50,9 @@ map(
   { noremap = true, silent = true, desc = "Toggle Background" }
 )
 
-map("n", "gq", function()
-  Util.format({ force = true })
-end, { desc = "LSP format file" })
+-- map("n", "gq", function()
+--   Util.format({ force = true })
+-- end, { desc = "LSP format file" })
 
 -- map(
 --   "n",

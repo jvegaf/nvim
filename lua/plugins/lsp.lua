@@ -24,30 +24,56 @@ return {
       },
     },
   },
+  -- {
+  --   "nvimtools/none-ls.nvim",
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  --   config = function()
+  --     local builtins = require("null-ls").builtins
+  --     require("null-ls").setup({
+  --       sources = {
+  --         builtins.formatting.prettierd.with({
+  --           filetypes = { "javascript", "typescript", "css", "scss", "html", "json" },
+  --         }),
+  --         builtins.diagnostics.stylelint,
+  --         builtins.formatting.stylua,
+  --         builtins.diagnostics.ktlint,
+  --         builtins.formatting.ktlint,
+  --       },
+  --     })
+  --   end,
+  -- },
   {
-    "nvimtools/none-ls.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      local builtins = require("null-ls").builtins
-      require("null-ls").setup({
-        sources = {
-          builtins.formatting.prettierd.with({
-            filetypes = { "javascript", "typescript", "css", "scss", "html", "json" },
-          }),
-          builtins.diagnostics.stylelint,
-          builtins.formatting.stylua,
-          builtins.diagnostics.ktlint,
-          builtins.formatting.ktlint,
-        },
-      })
-    end,
+    "stevearc/conform.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+        fish = { "fish_indent" },
+        sh = { "shfmt" },
+        kotlin = { "ktlint" },
+      },
+    },
+    keymaps = {
+      {
+        "gq",
+        function()
+          require("conform").format({
+            lsp_fallback = true,
+            async = false,
+            timeout_ms = 10000,
+          })
+        end,
+        mode = { "n", "v" },
+        desc = "Format File or range (in visual mode)",
+      },
+    },
   },
   {
     "jay-babu/mason-null-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "williamboman/mason.nvim",
-      "nvimtools/none-ls.nvim",
+      -- "nvimtools/none-ls.nvim",
     },
     config = function()
       require("mason-null-ls").setup({

@@ -41,9 +41,9 @@ autocmds("LspAttach", {
 
 -- disable autoformat
 
-autocmds({ "FileType" }, {
-  pattern = { " * " },
-  callback = function()
-    vim.b.autoformat = false
-  end,
-})
+-- autocmds({ "FileType" }, {
+--   pattern = { " * " },
+--   callback = function()
+--     vim.b.autoformat = false
+--   end,
+-- })
