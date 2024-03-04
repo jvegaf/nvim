@@ -21,6 +21,8 @@ return {
         "cssmodules-language-server",
         "kotlin-language-server",
         "lemminx",
+        "html-lsp",
+        "angular-language-server",
       },
     },
   },
@@ -81,7 +83,7 @@ return {
           "stylelint",
           "ktlint",
         },
-        -- automatic_installation = true,
+        automatic_installation = true,
       })
     end,
   },
