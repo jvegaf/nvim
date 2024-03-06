@@ -87,7 +87,7 @@ map("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
 map("n", "gK", vim.lsp.buf.signature_help, { desc = "Signature Help" })
 
 -- Select all
-map("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
+map("n", "<leader>a", "gg<S-v>G", { desc = "Select all" })
 
 -- Dont move cursor after yank
 map({ "v", "x" }, "y", "ygv<ESC>", { desc = "Yank" })
