@@ -90,6 +90,7 @@ return {
     end,
     keys = {
       { "<leader>gz", "<cmd>Telescope git_diffs  diff_commits<CR>", desc = "Telescope diff_commits" },
+      { "<leader>gb", "<cmd>Telescope git_branches <CR>", desc = "Branches" },
     },
   },
   {

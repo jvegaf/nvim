@@ -27,9 +27,6 @@ map("n", "vv", "V", NS)
 
 map("i", "jk", "<ESC>", NS)
 
--- Delete a word backwards
-map("n", "dw", 'vb"_d')
-
 -- Jumplist
 map("n", "<C-m>", "<C-i>", NS)
 
