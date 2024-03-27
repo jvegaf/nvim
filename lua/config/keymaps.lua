@@ -7,8 +7,6 @@ local NS = { noremap = true, silent = true }
 -- Shorten function name
 local map = vim.keymap.set
 
-map("n", "<C-i>", "<C-i>", NS)
-
 map("n", "x", '"_x', NS)
 
 -- Modes
@@ -23,11 +21,37 @@ map("n", "x", '"_x', NS)
 map("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", NS)
 
 -- Select all
-map("n", "<C-a>", "gg<S-v>G", NS)
+map("n", "<leader>a", "gg<S-v>G", NS)
 
 map("n", "vv", "V", NS)
 
 map("i", "jk", "<ESC>", NS)
+
+-- Delete a word backwards
+map("n", "dw", 'vb"_d')
+
+-- Jumplist
+map("n", "<C-m>", "<C-i>", NS)
+
+-- Split window
+map("n", "ss", ":split<Return>", NS)
+map("n", "sv", ":vsplit<Return>", NS)
+-- Move window
+map("n", "sh", "<C-w>h")
+map("n", "sk", "<C-w>k")
+map("n", "sj", "<C-w>j")
+map("n", "sl", "<C-w>l")
+
+-- Resize window
+map("n", "<C-w><left>", "<C-w><")
+map("n", "<C-w><right>", "<C-w>>")
+map("n", "<C-w><up>", "<C-w>+")
+map("n", "<C-w><down>", "<C-w>-")
+
+-- Diagnostics
+map("n", "<C-j>", function()
+  vim.diagnostic.goto_next()
+end, NS)
 
 -- dont yank on visual paste
 map("v", "p", '"_dP', NS)
@@ -35,12 +59,13 @@ map("v", "p", '"_dP', NS)
 map("n", "W", ":write<cr>", { noremap = true, silent = true, desc = "Save" })
 
 -- System
-map("n", "<leader>Sd", ":Alpha<cr>", { noremap = true, silent = true, desc = "Dashboard" })
-map("n", "<leader>Sc", ":e $MYVIMRC<cr>", { noremap = true, silent = true, desc = "Config" })
-map("n", "<leader>Sn", ":Telescope notify<cr>", { noremap = true, silent = true, desc = "Notifications" })
-map("n", "<leader>Sh", ":checkhealth<cr>", { noremap = true, silent = true, desc = "Health" })
-map("n", "<leader>Sm", ":Mason<cr>", { noremap = true, silent = true, desc = "Mason" })
-map("n", "<leader>sa", ":messages<cr>", { desc = "Messages" })
+map("n", "<leader>zd", ":Dashboard<cr>", { noremap = true, silent = true, desc = "Dashboard" })
+map("n", "<leader>ze", ":LazyExtras<cr>", { noremap = true, silent = true, desc = "Lazy Extras" })
+map("n", "<leader>zc", ":e $MYVIMRC<cr>", { noremap = true, silent = true, desc = "Config" })
+map("n", "<leader>zn", ":Telescope notify<cr>", { noremap = true, silent = true, desc = "Notifications" })
+map("n", "<leader>zh", ":checkhealth<cr>", { noremap = true, silent = true, desc = "Health" })
+map("n", "<leader>zm", ":Mason<cr>", { noremap = true, silent = true, desc = "Mason" })
+map("n", "<leader>za", ":messages<cr>", { desc = "Messages" })
 
 -- UI
 map(

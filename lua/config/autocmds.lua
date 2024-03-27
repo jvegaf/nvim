@@ -38,12 +38,17 @@ autocmds("LspAttach", {
     })
   end,
 })
+-- Turn off paste mode when leaving insert
+autocmds("InsertLeave", {
+  pattern = "*",
+  command = "set nopaste",
+})
 
--- disable autoformat
-
--- autocmds({ "FileType" }, {
---   pattern = { " * " },
---   callback = function()
---     vim.b.autoformat = false
---   end,
--- })
+-- Disable the concealing in some file formats
+-- The default conceallevel is 3 in LazyVim
+autocmds("FileType", {
+  pattern = { "json", "jsonc", "markdown" },
+  callback = function()
+    vim.opt.conceallevel = 0
+  end,
+})
