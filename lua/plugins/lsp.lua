@@ -110,19 +110,5 @@ return {
 
     build = ":MasonUpdate", -- :MasonUpdate updates registry contents
     opts = {},
-    -- config = function()
-    --   local lspconfig = require("lspconfig")
-    --   local capabilities = require("cmp_nvim_lsp").default_capabilities()
-    --
-    --   lspconfig.cssmodules_ls.setup({
-    --     capabilities = capabilities,
-    --     on_attach = function(client)
-    --       client.server_capabilities.definitionProvider = false
-    --     end,
-    --     init_options = {
-    --       camelCase = "dashes",
-    --     },
-    --   })
-    -- end,
   },
 }
