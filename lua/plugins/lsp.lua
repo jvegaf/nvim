@@ -23,6 +23,15 @@ return {
         "lemminx",
         "html-lsp",
         "angular-language-server",
+        "prismals",
+      },
+    },
+  },
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    opts = {
+      ensure_installed = {
+        "prisma-language-server",
       },
     },
   },
