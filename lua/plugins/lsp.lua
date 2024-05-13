@@ -18,11 +18,11 @@ return {
     opts = {
       ensure_installed = {
         "cssls",
-        "cssmodules-language-server",
-        "kotlin-language-server",
+        "cssmodules_ls",
+        "kotlin_language_server",
         "lemminx",
-        "html-lsp",
-        "angular-language-server",
+        "html",
+        "angularls",
         "prismals",
       },
     },
