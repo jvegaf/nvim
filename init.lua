@@ -14,6 +14,6 @@ if is_win then
   require("config.windows")
 end
 
--- if is_mac then
---   print("is mac")
--- end
+if is_mac then
+  require("config.macos")
+end
