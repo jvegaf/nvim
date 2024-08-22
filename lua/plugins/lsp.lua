@@ -5,11 +5,11 @@ return {
       ensure_installed = {
         "stylua",
         "prettierd",
-        "jdtls",
-        "java-test",
-        "java-debug-adapter",
-        "java-language-server",
-        "kotlin-debug-adapter",
+        -- "jdtls",
+        -- "java-test",
+        -- "java-debug-adapter",
+        -- "java-language-server",
+        -- "kotlin-debug-adapter",
       },
     },
   },
@@ -19,7 +19,7 @@ return {
       ensure_installed = {
         "cssls",
         "cssmodules_ls",
-        "kotlin_language_server",
+        -- "kotlin_language_server",
         "lemminx",
         "html",
         "angularls",
@@ -104,7 +104,7 @@ return {
       "mfussenegger/nvim-dap",
     },
     opts = {
-      ensure_installed = { "javadbg", "javatest", "kotlin" },
+      -- ensure_installed = { "javadbg", "javatest", "kotlin" },
     },
   },
 
@@ -114,7 +114,7 @@ return {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "hrsh7th/cmp-nvim-lsp",
-      { "mfussenegger/nvim-jdtls" },
+      -- { "mfussenegger/nvim-jdtls" },
     },
 
     build = ":MasonUpdate", -- :MasonUpdate updates registry contents
