@@ -45,7 +45,6 @@ return {
       "Piomon",
     },
   },
-
   {
     "p00f/clangd_extensions.nvim",
     lazy = true,
@@ -56,19 +55,31 @@ return {
       },
     },
   },
-
   {
-    "RaafatTurki/hex.nvim",
-    -- enabled = vim.fn.executable("xxd") == 1,
-    enabled = false,
-    config = true,
-    cmd = { "HexDump", "HexAssemble", "HexToggle" },
-  },
-
-  {
-    "jedrzejboczar/nvim-dap-cortex-debug",
-    enabled = false,
-    dependencies = { "mfussenegger/nvim-dap" },
-    config = true,
+    "Frayzen/cpp-tools.nvim",
+    config = function()
+      require("cpp-tools").setup()
+      require("which-key").add({
+        { "<leader>t", group = "tools" },
+        {
+          "<leader>ti",
+          function()
+            require("cpp-tools").implement()
+          end,
+          desc = "Implement",
+        },
+        {
+          "<leader>tr",
+          function()
+            require("cpp-tools").refactor()
+          end,
+          desc = "Refactor",
+        },
+      })
+    end,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-lua/plenary.nvim",
+    },
   },
 }

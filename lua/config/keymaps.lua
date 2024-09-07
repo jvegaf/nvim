@@ -72,6 +72,8 @@ map(
   { noremap = true, silent = true, desc = "Toggle Background" }
 )
 
+map("n", "gq", ":LazyFormat<cr>", { desc = "Format File" })
+
 -- map("n", "gq", function()
 --   Util.format({ force = true })
 -- end, { desc = "LSP format file" })
