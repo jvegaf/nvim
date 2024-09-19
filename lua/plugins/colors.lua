@@ -1,3 +1,5 @@
+local is_transparent = true
+
 return {
   {
     "tanvirtin/monokai.nvim",
@@ -8,6 +10,12 @@ return {
     "navarasu/onedark.nvim",
     lazy = false,
     priority = 1000,
+    config = function()
+      require("onedark").setup({
+        style = "deep",
+      })
+      require("onedark").load()
+    end,
   },
   {
     "catppuccin/nvim",
@@ -67,4 +75,26 @@ return {
     priority = 1000,
     opts = {},
   },
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    opts = {
+      variant = "moon",
+      disable_background = is_transparent,
+      disable_float_background = is_transparent,
+      styles = {
+        bold = true,
+        italic = true,
+        transparency = is_transparent,
+      },
+    },
+    lazy = false,
+    priority = 1000,
+  },
+  -- {
+  --   "LazyVim/LazyVim",
+  --   opts = {
+  --     colorscheme = "onedark",
+  --   },
+  -- },
 }
