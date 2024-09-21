@@ -29,7 +29,13 @@ return {
     "supermaven-inc/supermaven-nvim",
     event = "VeryLazy",
     config = function()
-      require("supermaven-nvim").setup({})
+      require("supermaven-nvim").setup({
+        keymaps = {
+          accept_suggestion = "<A-f>",
+          clear_suggestion = "<A-c>",
+          accept_word = "<A-w>",
+        },
+      })
     end,
   },
 }
