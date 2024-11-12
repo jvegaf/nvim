@@ -114,3 +114,6 @@ vim.filetype.add({
 
 vim.g.mapleader = ","
 -- vim.g.maplocalleader = ","
+
+vim.g.lazyvim_python_lsp = "basedpyright"
+vim.g.lazyvim_python_ruff = "ruff"
