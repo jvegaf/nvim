@@ -34,10 +34,10 @@ map("n", "<C-m>", "<C-i>", NS)
 map("n", "ss", ":split<Return>", NS)
 map("n", "sv", ":vsplit<Return>", NS)
 -- Move window
-map("n", "sh", "<C-w>h")
-map("n", "sk", "<C-w>k")
-map("n", "sj", "<C-w>j")
-map("n", "sl", "<C-w>l")
+-- map("n", "sh", "<C-w>h")
+-- map("n", "sk", "<C-w>k")
+-- map("n", "sj", "<C-w>j")
+-- map("n", "sl", "<C-w>l")
 
 -- Resize window
 map("n", "<C-w><left>", "<C-w><")
